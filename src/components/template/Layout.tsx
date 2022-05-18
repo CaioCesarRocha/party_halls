@@ -6,6 +6,7 @@ import SideMenu from './SideMenu';
 import TopBar from './TopBar';
 import Content from './Content';
 import ForceAuthentication from '../auth/ForceAuthentication';
+import BottomBar from './BottomBar';
 
 interface LayoutProps {
     title: string, 
@@ -36,6 +37,8 @@ export default function Layout (props: LayoutProps){
                     <Content>
                         {props.children}
                     </Content>
+
+                    <BottomBar/>
                 </Box>
             
             </Flex>

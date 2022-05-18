@@ -51,11 +51,11 @@ export function AuthProvider(props){
 
     async function configSession(userFirebase){
         if(userFirebase?.email){
-            const user = await normalizeUser(userFirebase)
-            setUser(user)
+            const userLogged = await normalizeUser(userFirebase)
+            setUser(userLogged) 
             handleCookie(true)
-            setLoading(true)
-            return user.email //será usado para detectar quando o usuario mudou
+            setLoading(false)
+            return userLogged.email //será usado para detectar quando o usuario mudou
         }else{
             setUser(null)
             handleCookie(false)
@@ -127,8 +127,7 @@ export function AuthProvider(props){
             return () => cancel() //quando componente for desmontado ele para de observar se mudou id /\
         }else{
             setLoading(false)
-        }
-        
+        }      
     }, [])
 
 
