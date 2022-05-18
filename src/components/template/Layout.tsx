@@ -21,7 +21,7 @@ export default function Layout (props: LayoutProps){
     return(
         <ForceAuthentication> 
             <Flex
-                h='calc(100vh)' 
+                h='calc(100vh)'                           
             >
                 <SideMenu/>
                 <Box 
@@ -38,7 +38,13 @@ export default function Layout (props: LayoutProps){
                         {props.children}
                     </Content>
 
-                    <BottomBar/>
+                    <Box w='100%' h={{base:'90%', lg: '82%'}} 
+                        display='flex' flexDirection='row' 
+                        justifyContent='center' alignItems='end' 
+                    >
+                        <BottomBar/>
+                    </Box>
+                                                   
                 </Box>
             
             </Flex>
