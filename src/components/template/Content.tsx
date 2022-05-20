@@ -14,6 +14,7 @@ export default function Content(props: ContentProps){
             flexDirection='column'
             mt={7}
             color={themeColors.textBaseColor}
+            bgColor={themeColors.bgBaseColor}
         >
             {props.children}
         </Flex>

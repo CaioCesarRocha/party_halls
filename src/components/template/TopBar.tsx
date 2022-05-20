@@ -14,7 +14,7 @@ export default function TopBar(props: TopBarProps){
 
     return(
         
-        <Flex>   
+        <Flex >   
             <Title
                 title= {props.title}
                 subtitle={props.subtitle}

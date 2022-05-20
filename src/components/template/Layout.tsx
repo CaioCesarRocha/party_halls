@@ -21,13 +21,17 @@ export default function Layout (props: LayoutProps){
     return(
         <ForceAuthentication> 
             <Flex
-                h='calc(100vh)'                           
+                h='calc(88vh)' 
+                overflow='auto'
+                bg={themeColors.bgBaseColor}
             >
                 <SideMenu/>
+
                 <Box 
                     flexDirection='column' 
-                    w='full'  p={5}           
+                    w='full'  p={3}           
                     bg={themeColors.bgBaseColor}
+                    ml={81}
                 >
                     <TopBar
                         title={props.title}
@@ -36,18 +40,15 @@ export default function Layout (props: LayoutProps){
 
                     <Content>
                         {props.children}
-                    </Content>
-
-                    <Box w='100%' h={{base:'90%', lg: '82%'}} 
-                        display='flex' flexDirection='row' 
-                        justifyContent='center' alignItems='end' 
-                    >
-                        <BottomBar/>
-                    </Box>
-                                                   
-                </Box>
-            
+                    </Content>                                                          
+                </Box>      
             </Flex>
+
+            <Box  
+                bgColor={themeColors.bgBaseColor}
+            >
+                <BottomBar/>
+            </Box>   
         </ForceAuthentication>
     )
 }

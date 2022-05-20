@@ -16,7 +16,9 @@ export default function SideMenu (){
         <Menu >
             <Flex 
                 flexDirection='column' 
-                color={themeColors.bgMenu} 
+                color={themeColors.bgMenu}
+                bgColor={themeColors.bgMenu}
+                position='absolute'
             >
                 <Box
                     display='flex' flexDirection="column" 
@@ -29,14 +31,16 @@ export default function SideMenu (){
                 </Box>
 
         
-                <List color={themeColors.textBaseColor}>
+                <List color={themeColors.textBaseColor} >
                     <MenuItem url="/spaces" text="Espaços" icon={icons.iconSpace}/>
                     <MenuItem url="/" text="Clients" icon={icons.iconClients}/>
                     <MenuItem url="/providers" text="Fornecedores" icon={icons.iconProviders}/>
                     <MenuItem url="/schedules" text="Agendamento" icon={icons.iconSchedules}/>             
                 </List>
 
-                <List flex={1} position='absolute' bottom={0} color={themeColors.exitItemColor} >
+                <List 
+                    color={themeColors.exitItemColor} bgColor={themeColors.bgMenu}
+                >
                     <MenuItem 
                         text="Sair" 
                         icon={icons.iconOut}
