@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ThemeColors } from "../pages/tema/themeColors";
 import Layout from "../components/template/Layout"
 import Gallery from '../components/template/Gallery';
+import ButtonBasic from "../components/template/Buttons/ButtonBasisc";
 
 
 
@@ -19,22 +20,17 @@ export default function Home() {
     > 
       <Box bgColor={themeColors.bgBaseColor} w='100%'  >
         <Flex flexDirection='row' >
-          <Button
-            bgColor={themeColors.bgButtonGallery} color={themeColors.textButtonGallery}
-            _hover={{bgColor: themeColors.hoverBGButtonGallery}}
-            onClick={() => setTypeGallery('INTERN')}
-          >
-            Interno
-          </Button>
 
-          <Button
-            ml={5}
-            bgColor={themeColors.bgButtonGallery} color={themeColors.textButtonGallery}
-            _hover={{bgColor: themeColors.hoverBGButtonGallery}}
+          <ButtonBasic
+            info='Interno'
+            onClick={() => setTypeGallery('INTERN')}
+          />
+
+          <ButtonBasic
+            info='Externo'
             onClick={() => setTypeGallery('EXTERN')}
-          >
-            Externo
-          </Button>
+          />
+
         </Flex>
               
         <Gallery

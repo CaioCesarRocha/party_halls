@@ -46,14 +46,12 @@ export default function ForceAuthentication(props) {
     }
 
 
-    if(!loading && user?.email){ //se tiver carregando e usuário setado entao renderiza conteudo
-           
+    if(!loading && user?.email){ //se tiver carregando e usuário setado entao renderiza conteudo      
         return renderContent();
     }else if(loading){
         return renderLoading(); //se tiver só carregando entao libera o gif Loading...
     }
     else{
-        console.log('passei no errado DASTA FORCE')
         router.push('/authentication'); //se nao tiver carregando, entao tem q logar novamente
         return null
     }

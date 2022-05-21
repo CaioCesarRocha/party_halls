@@ -1,4 +1,4 @@
-import {Text} from "@chakra-ui/react"
+import {Text, Box} from "@chakra-ui/react"
 import { ThemeColors } from "../../pages/tema/themeColors";
 
 interface LayoutProps {
@@ -11,7 +11,7 @@ export default function Title (props: LayoutProps){
     const themeColors = ThemeColors();
 
     return(
-        <div>
+        <Box w='80%'>
             <Text
                 fontFamily='black' fontSize='4xl'
                 color={themeColors.textBaseColor}
@@ -20,11 +20,13 @@ export default function Title (props: LayoutProps){
             </Text>
 
             <Text
-                fontFamily="light" fontSize={'sm'}
+                fontFamily="light" fontSize={'mm'}
+               
+                
                 color={themeColors.textBaseColor}
             >
                 {props.subtitle}
             </Text>
-        </div>
+        </Box>
     )
 }

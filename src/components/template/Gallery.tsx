@@ -1,9 +1,9 @@
-import {Flex, Image, } from "@chakra-ui/react";
+import {Flex, Image, Text } from "@chakra-ui/react";
 
 import Imgix from "react-imgix";
 
 export type typeGallery ={
-    title: 'INTERN' | 'EXTERN'
+    title: 'INTERN' | 'EXTERN' 
 }
 
 export default function Gallery(props: typeGallery) {
@@ -58,13 +58,19 @@ export default function Gallery(props: typeGallery) {
                         key={index}
                         sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
                         src={images}
+                        title={'Carrousel'}
                         imgixParams={{
                             fit: "crop",
                             fm: "jpg"
                         }}
                         width={500}
                         height={500}
-                    />
+                        
+                    >
+                        <Text mt={30} color='pink.800'>TESTE</Text>
+                        
+                    
+                    </Imgix>
                 ))            
             }
             
