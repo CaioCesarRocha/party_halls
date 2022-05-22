@@ -32,10 +32,10 @@ export default function SideMenu (){
 
         
                 <List color={themeColors.textBaseColor} >
-                    <MenuItem url="/spaces" text="Espaços" icon={icons.iconSpace}/>
-                    <MenuItem url="/" text="Clients" icon={icons.iconClients}/>
+                    <MenuItem url="/spaces" text="Espaços" icon={icons.iconSpace}/>                  
                     <MenuItem url="/providers" text="Fornecedores" icon={icons.iconProviders}/>
-                    <MenuItem url="/schedules" text="Agendamento" icon={icons.iconSchedules}/>             
+                    <MenuItem url="/schedules" text="Agendamento" icon={icons.iconSchedules}/> 
+                    <MenuItem url="/budget" text="Orçamento" icon={icons.iconBudget}/>            
                 </List>
 
                 <List 

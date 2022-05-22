@@ -10,7 +10,7 @@ import { ThemeColors } from "./tema/themeColors";
 
 
 
-export default function Home() {
+export default function Providers() {
   const themeColors = ThemeColors();
   const [title, setTitle] = useState<string>('Casamento')
   const [providers, setProviders] = useState<any[]>([]);

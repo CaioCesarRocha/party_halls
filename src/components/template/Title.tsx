@@ -20,7 +20,7 @@ export default function Title (props: LayoutProps){
             </Text>
 
             <Text
-                fontFamily="light" fontSize={'mm'}
+                fontFamily='serif' fontSize={'mm'}
                
                 
                 color={themeColors.textBaseColor}
