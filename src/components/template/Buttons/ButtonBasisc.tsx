@@ -4,7 +4,6 @@ import { ThemeColors } from "../../../pages/tema/themeColors";
 interface propsButton {
     info: string,
     onClick: () => void,
-
 }
 
 

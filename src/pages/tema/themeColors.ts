@@ -9,7 +9,7 @@ export function ThemeColors(){            //light     //dark
     const bgHoverColor = useColorModeValue("gray.200", "gray.600")
     const textHoverColor = useColorModeValue("gray.500", "gray.900")
 
-    const bgMenu = useColorModeValue("gray.400", "gray.900") 
+    const bgMenu = useColorModeValue("#acacb0", "gray.900") 
 
     const exitItemColor = useColorModeValue("red.600", "red.300")
     const exitHoverItem = useColorModeValue("red.300",  "red.800")
@@ -20,7 +20,11 @@ export function ThemeColors(){            //light     //dark
     //cor Buttons da gallery (tela Spaces)
     const bgButtonGallery = useColorModeValue("teal.900", "teal.500")
     const textButtonGallery = useColorModeValue("gray.100", "gray.800")
-    const hoverBGButtonGallery = useColorModeValue("teal.500", "teal.800") 
+    const hoverBGButtonGallery = useColorModeValue("teal.500", "teal.800")
+    
+    //cor do Form #010d1a, #012345
+    const bgForm = useColorModeValue( 'linear-gradient(to right, #acacb0, #404042  )'
+    , 'linear-gradient(to right, #171923, #3e495e)')
 
     
 
@@ -31,6 +35,7 @@ export function ThemeColors(){            //light     //dark
         exitItemColor, exitHoverItem, 
         bgSwitchTheme,
         bgButtonGallery, textButtonGallery, hoverBGButtonGallery,
+        bgForm,
     }
 
     return colors;
