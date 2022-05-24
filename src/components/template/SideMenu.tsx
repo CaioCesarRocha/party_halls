@@ -27,7 +27,7 @@ export default function SideMenu (){
                     cursor='pointer'
                     h={20} w={20}
                 >
-                    <Logo/>
+                    <Logo  url="/" />
                 </Box>
 
         

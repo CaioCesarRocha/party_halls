@@ -1,11 +1,11 @@
-import {Flex, Image, Text, Box, Button, theme } from "@chakra-ui/react";
+import {Flex, Box } from "@chakra-ui/react";
 import { useState } from "react";
 
 import { ThemeColors } from "../pages/tema/themeColors";
 import Layout from "../components/template/Layout"
 import Gallery from '../components/template/Gallery';
 import ButtonBasic from "../components/template/Buttons/ButtonBasisc";
-
+import GalleryOpen from "../components/template/GalleryOpen";
 
 
 export default function Home() {
@@ -19,20 +19,22 @@ export default function Home() {
       
     > 
       <Box bgColor={themeColors.bgBaseColor} w='100%'  >
-        <Flex flexDirection='row' >
+        <Flex flexDirection='row' justifyContent='space-between'>
 
-          <ButtonBasic
-            info='Interno'
-            onClick={() => setTypeGallery('INTERN')}
-          />
+          <Flex justifyContent='center'> 
+            <ButtonBasic
+              info='Interno'
+              onClick={() => setTypeGallery('INTERN')}
+            />
+              <ButtonBasic
+              info='Externo'
+              onClick={() => setTypeGallery('EXTERN')}
+            />
+          </Flex>  
 
-          <ButtonBasic
-            info='Externo'
-            onClick={() => setTypeGallery('EXTERN')}
-          />
-
+          <GalleryOpen title={typeGallery} />
         </Flex>
-              
+           
         <Gallery
           title={typeGallery}
         />

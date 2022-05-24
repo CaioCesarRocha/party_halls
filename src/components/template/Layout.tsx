@@ -21,7 +21,7 @@ export default function Layout (props: LayoutProps){
     return(
         <ForceAuthentication> 
             <Flex
-                h='calc(88vh)' 
+                h='88.5vh' 
                 overflow='auto'
                 bg={themeColors.bgBaseColor}
             >
