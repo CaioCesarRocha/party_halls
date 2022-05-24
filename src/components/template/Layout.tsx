@@ -29,7 +29,7 @@ export default function Layout (props: LayoutProps){
 
                 <Box 
                     flexDirection='column' 
-                    w='full'  p={3}           
+                    w='full'  p={4}           
                     bg={themeColors.bgBaseColor}
                     ml={81}
                 >

@@ -86,6 +86,7 @@ export function AuthProvider(props){
                 .createUserWithEmailAndPassword(email, password)
 
             await configSession(resp.user)
+            
             route.push('/') 
         } finally {
             setLoading(false)

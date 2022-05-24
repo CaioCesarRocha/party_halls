@@ -7,7 +7,6 @@ import ErrorForm from "../components/template/Form/ErrorForm";
 import InputForm from "../components/template/Form/Input";
 import SwitchForm from "../components/template/Form/SwitchForm";
 import { ThemeColors } from "./tema/themeColors";
-import { MdGradient } from "react-icons/md";
 
 
 const schema = Yup.object().shape({ //validation com Yup
@@ -55,7 +54,7 @@ export default function Budget() {
             <Box width='100%' margin='0 auto'>
                 <Flex flexDirection='column'>
                     <form 
-                        style={{margin: '8px auto', width: '500px', padding: 32, 
+                        style={{margin: '8px auto', maxWidth: '500px', padding: 32, 
                           borderRadius: 12, backgroundImage: themeColors.bgForm
                         }}
                         onSubmit={formik.handleSubmit}
