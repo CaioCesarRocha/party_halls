@@ -9,7 +9,7 @@ export default function BottomBar(){
                 flexDirection='row'            
                // w='100%'  
                 justifyContent='center' alignItems='end' p={4}
-                backgroundColor={themeColors.bgMenu}
+                bgColor={themeColors.bgMenu}
             >   
            
                 <Text

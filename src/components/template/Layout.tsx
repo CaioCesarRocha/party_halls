@@ -21,16 +21,17 @@ export default function Layout (props: LayoutProps){
     return(
         <ForceAuthentication> 
             <Flex
-                h='88.5vh' 
+            h={{base:'93.3vh', xl:'88.5vh'}}
+                //h='93.3vh' 
                 overflow='auto'
-                bg={themeColors.bgBaseColor}
+                bgColor={themeColors.bgBaseColor}
             >
                 <SideMenu/>
 
                 <Box 
                     flexDirection='column' 
-                    w='full'  p={4}           
-                    bg={themeColors.bgBaseColor}
+                    w='full'  p={4}          
+                    bgColor={themeColors.bgBaseColor}
                     ml={81}
                 >
                     <TopBar

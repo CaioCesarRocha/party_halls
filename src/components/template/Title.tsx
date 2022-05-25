@@ -20,9 +20,7 @@ export default function Title (props: LayoutProps){
             </Text>
 
             <Text
-                fontFamily='serif' fontSize={'mm'}
-               
-                
+                fontFamily='serif'         
                 color={themeColors.textBaseColor}
             >
                 {props.subtitle}

@@ -1,8 +1,5 @@
 import {Flex, Text, Box, Container} from "@chakra-ui/react";
 import Imgix from "react-imgix";
-import { useState } from "react";
-
-
 
 
 export type typeGallery ={
@@ -72,12 +69,6 @@ export default function Gallery(props: typeGallery) {
                 ))            
             }      
         </Flex>           
-    )
-
-   
-
+    )  
 }
 
-/*
- 
-</Flex>*/

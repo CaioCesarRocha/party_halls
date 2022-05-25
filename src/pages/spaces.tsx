@@ -18,7 +18,7 @@ export default function Home() {
       subtitle="Conheça todas áreas disponíveis para o evento"
       
     > 
-      <Box bgColor={themeColors.bgBaseColor} w='100%'  >
+      <Box w='100%'  >
         <Flex flexDirection='row' justifyContent='space-between'>
 
           <Flex justifyContent='center'> 
