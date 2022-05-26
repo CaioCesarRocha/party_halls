@@ -87,7 +87,7 @@ export default function Providers() {
       })}
 
       {providers.length === 0 ? 
-        <Text textAlign='center'mt={10}fontSize='4xl' color='gray.100'>
+        <Text textAlign='center'mt={10}fontSize='4xl' color={themeColors.textBaseColor}>
           Nenhum fornecedor informado.
         </Text> 
       : 

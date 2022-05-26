@@ -1,7 +1,8 @@
 
-import {Flex, Text, Box, Image, AspectRatio} from "@chakra-ui/react";
+import {Flex, Text, Box, Image, AspectRatio, Icon} from "@chakra-ui/react";
 import Layout from "../components/template/Layout"
 
+import * as icon from '../components/Icons'
 import { ThemeColors } from "../pages/tema/themeColors";
 
 
@@ -49,14 +50,18 @@ export default function Home() {
         <Text 
           fontSize={{base: 'xl', sm:'2xl'}} justifyItems='stretch'
           mt={8} margin='8 auto' w={{lg: '4xl'}}
-        >
-          - Somos uma empresa especializada em comemorações festivas sempre buscando oferecer o melhor pra você.
+        > 
+            <Icon color='green.400' mr={2} mb={1}> {icon.iconBallons} </Icon>
+            Somos uma empresa especializada em comemorações festivas sempre buscando oferecer o melhor pra você.
           <br/><br/>
-          - Você pode navegar pelo nosso site utilizando o Menu ao lado.
-           <br/><br/>
-          - Confira os espaços disponíveis para festas, siga nossos parceiros e aproveite para fazer o orçamento.
+            <Icon color='green.400' mr={2} mb={1}> {icon.iconMenu} </Icon>
+            Você pode navegar pelo nosso site utilizando o Menu ao lado.
           <br/><br/>
-          - Contamos com uma equipe com mais de 40 funcionários, entre em contato para tirar as dúvidas!
+            <Icon color='green.400' mr={2} mb={1}> {icon.iconMoney} </Icon>
+            Confira os espaços disponíveis para festas, siga nossos parceiros e aproveite para fazer o orçamento.
+          <br/><br/>
+            <Icon color='green.400' mr={2} mb={1}> {icon.iconPeople} </Icon>
+            Contamos com uma equipe com mais de 40 funcionários, entre em contato para tirar as dúvidas!
         </Text>
       </Box>
      

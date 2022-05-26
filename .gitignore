@@ -1,6 +1,9 @@
 #testes
 db.json
 
+#public
+public/Videos
+
 # dependencies
 /node_modules
 /.pnp
