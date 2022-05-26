@@ -12,6 +12,7 @@ export default function Content(props: ContentProps){
     return(
         <Flex
             flexDirection='column'
+            w='full'
             mt={7}
             color={themeColors.textBaseColor}
             bgColor={themeColors.bgBaseColor}

@@ -26,6 +26,8 @@ export function ThemeColors(){            //light     //dark
     const bgForm = useColorModeValue( 'linear-gradient(to right, #acacb0, #404042  )'
     , 'linear-gradient(to right, #171923, #3e495e)')
 
+    const teste = useColorModeValue('/Images/logo_house.png', '/Images/logo_house_white.png')
+
     
 
     const colors = {
@@ -36,6 +38,7 @@ export function ThemeColors(){            //light     //dark
         bgSwitchTheme,
         bgButtonGallery, textButtonGallery, hoverBGButtonGallery,
         bgForm,
+        teste
     }
 
     return colors;

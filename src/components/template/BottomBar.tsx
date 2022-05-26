@@ -8,13 +8,13 @@ export default function BottomBar(){
             <Flex
                 flexDirection='row'            
                // w='100%'  
-                justifyContent='center' alignItems='end' p={4}
+                justifyContent='center' alignItems='end' p={1}
                 bgColor={themeColors.bgMenu}
             >   
            
                 <Text
                         display={{base: 'none', sm: 'block' }}
-                        mb={1}
+                        mb={2}
                 >
                     Entre em contato via:
                     </Text>
