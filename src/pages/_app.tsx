@@ -1,6 +1,6 @@
 import { ChakraProvider,  } from '@chakra-ui/react' 
 
-import theme from './tema/themeDark'
+import theme from './services/tema/themeDark'
 import { AuthProvider } from '../data/context/AuthContext'
 import '../styles/globals.css'
 

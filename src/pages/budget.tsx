@@ -1,38 +1,26 @@
 import {Flex, Box, Button, FormLabel, Textarea, Select} from "@chakra-ui/react";
 import { useFormik } from 'formik';
-import * as Yup from "yup";
 
 import Layout from "../components/template/Layout";
 import ErrorForm from "../components/template/Form/ErrorForm";
 import InputForm from "../components/template/Form/Input";
 import SwitchForm from "../components/template/Form/SwitchForm";
-import { ThemeColors } from "./tema/themeColors";
+import { ThemeColors } from "./services/tema/themeColors";
+import * as validationBudget from "./services/validationForms/formBudget";
 
 
-const schema = Yup.object().shape({ //validation com Yup
-    name: Yup.string().required('O campo Nome é obrigatório'),
-    company: Yup.string(),
-    contact: Yup.number().required('Informe o telefone de contato').min(8, 'O telefone tem mais de 8 números'),
-    desiredDate: Yup.date().required('Informe a data desejada').min(10, 'Data inserida não existe, um exemplo de data certa é 10/10/2020'),
-    numberParticipants: Yup.number().required('Informe o número aproximado de participantes').max(320, 'Número maximo de participantes é 320'),
-    typeParty: Yup.string().required('Selecione o tipo de festa desejado'),
-    buffet: Yup.boolean(),
-    decoration: Yup.boolean(),
-    description: Yup.string(),  
-})
+export function getStaticProps(){
+    return { props:{} }
+  }
 
 
 export default function Budget() {
     const themeColors = ThemeColors();
 
-    const initialValues = { name: '', company: '', contact: '', desiredDate: '', 
-    numberParticipants: '', typeParty: 'Casamento' , buffet: true, decoration: true, 
-    description: ''};
-
     const formik  = useFormik({
-        initialValues: initialValues,
+        initialValues: validationBudget.initialValues,
     
-        validationSchema: schema,
+        validationSchema: validationBudget.schema,
     
         enableReinitialize: true,
 
@@ -54,7 +42,7 @@ export default function Budget() {
             <Box width='100%' margin='0 auto'>
                 <Flex flexDirection='column'>
                     <form 
-                        style={{margin: '8px auto', maxWidth: '500px', padding: 32, 
+                        style={{margin: '8px auto', maxWidth: '550px', padding: 32, 
                           borderRadius: 12, backgroundImage: themeColors.bgForm
                         }}
                         onSubmit={formik.handleSubmit}
@@ -97,13 +85,12 @@ export default function Budget() {
 
                         <InputForm
                             nameHMTLFOR="numberParticipants" nameInput="numberParticipants"
-                            nameField="Número de Participantes (Máximo 320)"
+                            nameField="Número de Participantes (Máximo 420)"
                             type='number'
                             value={formik.values.numberParticipants}
                             onChange={formik.handleChange}
                         />
                         {formik.errors.numberParticipants && formik.touched.numberParticipants && (<ErrorForm> {formik.errors.numberParticipants}</ErrorForm>)}
-
 
                         <FormLabel htmlFor='typeParty' mt={2}>Selecione o tipo da Festa</FormLabel>                
                         <Select name="typeParty"  onChange={formik.handleChange}>
@@ -132,8 +119,7 @@ export default function Budget() {
                                 />
                             </Flex>
                         </Flex>
-
-                       
+                      
                         <FormLabel htmlFor='description' mt={3}> Observações </FormLabel>
                          <Textarea
                             name="description"
@@ -143,17 +129,12 @@ export default function Budget() {
                             size='sm'
                         />
 
-                        <Button
-                            type='submit' mt={5} 
-                        >
+                        <Button type='submit' mt={5} >
                             Solicitar Orçamento
-                        </Button>
-                                              
+                        </Button>                                   
                     </form>      
                 </Flex>
             </Box>
         </Layout>
-
     )
-
 }

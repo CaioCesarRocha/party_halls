@@ -1,9 +1,17 @@
 
-import {Flex, Text, Box, Image, AspectRatio, Icon} from "@chakra-ui/react";
+import {Text, Box, Image, AspectRatio, Icon} from "@chakra-ui/react";
 import Layout from "../components/template/Layout"
 
 import * as icon from '../components/Icons'
-import { ThemeColors } from "../pages/tema/themeColors";
+import { ThemeColors } from "./services/tema/themeColors";
+
+
+export function getStaticProps(){
+  return {
+    props:{
+    }
+  }
+}
 
 
 export default function Home() {

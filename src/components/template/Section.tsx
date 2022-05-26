@@ -1,5 +1,5 @@
 import { Box, Flex, Text, Image, Divider} from "@chakra-ui/react";
-import { ThemeColors } from "../../pages/tema/themeColors";
+import { ThemeColors } from "../../pages/services/tema/themeColors";
 
 interface propsSection {
     name: string,

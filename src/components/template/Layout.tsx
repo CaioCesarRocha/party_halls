@@ -1,7 +1,7 @@
 
 import {Flex, Box } from "@chakra-ui/react";
 
-import { ThemeColors } from "../../pages/tema/themeColors";
+import { ThemeColors } from "../../pages/services/tema/themeColors";
 import SideMenu from './SideMenu';
 import TopBar from './TopBar';
 import Content from './Content';
@@ -21,7 +21,7 @@ export default function Layout (props: LayoutProps){
     return(
         <ForceAuthentication> 
             <Flex
-                h={{base:'94.8vh', xl:'92.3vh'}}
+                h={{base:'95.7vh', xl:'92.3vh'}}
                 overflow='auto'
                 bgColor={themeColors.bgBaseColor}
             >

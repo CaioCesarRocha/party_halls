@@ -1,5 +1,5 @@
-import {Text, List , ListItem, useColorMode, useColorModeValue} from "@chakra-ui/react";
-import { ThemeColors } from "../../pages/tema/themeColors";
+import {Text, List , ListItem, } from "@chakra-ui/react";
+import { ThemeColors } from "../../pages/services/tema/themeColors";
 import Link from 'next/link';
 
 interface MenuItemProps { 

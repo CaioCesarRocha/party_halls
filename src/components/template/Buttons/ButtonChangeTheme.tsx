@@ -1,5 +1,5 @@
 import {Button, useColorMode} from "@chakra-ui/react";
-import { ThemeColors } from "../../../pages/tema/themeColors";
+import { ThemeColors } from "../../../pages/services/tema/themeColors";
 
 
 

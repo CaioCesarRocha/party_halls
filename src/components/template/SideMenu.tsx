@@ -1,6 +1,6 @@
 import {Box, List, Menu, Flex} from "@chakra-ui/react";
 
-import { ThemeColors } from "../../pages/tema/themeColors";
+import { ThemeColors } from "../../pages/services/tema/themeColors";
 import MenuItem from "./MenuItem";
 import Logo from './Logo';
 import  *  as icons from "../Icons";

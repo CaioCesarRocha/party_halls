@@ -3,7 +3,7 @@ import {Modal, ModalOverlay, ModalContent,  ModalHeader, ModalFooter,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
-import { ThemeColors } from "../../pages/tema/themeColors";
+import { ThemeColors } from "../../pages/services/tema/themeColors";
 import { typeGallery } from './Gallery'
 
 export default function GalleryOpen(props: typeGallery) {

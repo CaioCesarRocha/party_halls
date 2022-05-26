@@ -1,5 +1,5 @@
 import {Flex, Image, Text, Box } from "@chakra-ui/react";
-import { ThemeColors } from "../../pages/tema/themeColors";
+import { ThemeColors } from "../../pages/services/tema/themeColors";
 
 export default function BottomBar(){
     const themeColors = ThemeColors();

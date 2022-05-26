@@ -1,5 +1,5 @@
 import {Input, Box} from "@chakra-ui/react"
-import { ThemeColors } from "../../pages/tema/themeColors";
+
 
 interface AuthInputProps{
     label: string,
@@ -12,11 +12,8 @@ interface AuthInputProps{
 
 export default function AuthInput(props: AuthInputProps){
 
-    const themeColors = ThemeColors();
-
     return props.notRender ? null : (
        <Box mt={4}>
-
             <label style={{fontFamily:'bold', color:'#dfe1e6'}}> 
                 {props.label} 
             </label>
@@ -30,7 +27,6 @@ export default function AuthInput(props: AuthInputProps){
                 required={props.required}
                 onChange={e => props.changeValue?.(e.target.value)} // se mudou valor entao passa o newvalue
             />
-
        </Box>
     )
 }

@@ -1,4 +1,4 @@
-import {Flex, Text, Box, Container} from "@chakra-ui/react";
+import {Flex, Container} from "@chakra-ui/react";
 import Imgix from "react-imgix";
 
 

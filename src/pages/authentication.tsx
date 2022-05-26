@@ -129,7 +129,6 @@ export default function Authetication() {
                         </a>
                     </Text>              
                 }
-
             </Box>
         </Flex>
     )

@@ -1,4 +1,4 @@
-import {Flex, Image, Text, Box, Button, theme } from "@chakra-ui/react";
+import {Flex, Text, } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import Layout from "../components/template/Layout"
@@ -6,7 +6,7 @@ import ButtonBasic from "../components/template/Buttons/ButtonBasisc"
 import Section from "../components/template/Section";
 
 import * as teste from '../components/testes';
-import { ThemeColors } from "./tema/themeColors";
+import { ThemeColors } from "./services/tema/themeColors";
 
 
 
@@ -93,9 +93,6 @@ export default function Providers() {
       : 
         null
       }
-
-        
-
     </Layout>
   )
 }

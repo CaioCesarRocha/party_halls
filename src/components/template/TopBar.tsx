@@ -12,8 +12,7 @@ interface TopBarProps{
 
 export default function TopBar(props: TopBarProps){
 
-    return(
-        
+    return(        
         <Flex >   
             <Title
                 title= {props.title}
@@ -23,7 +22,6 @@ export default function TopBar(props: TopBarProps){
                 <ButtonChangeTheme/>   
                 <AvatarUser/>                       
             </Flex>
-
         </Flex>
     )
 }
