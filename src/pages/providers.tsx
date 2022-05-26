@@ -4,31 +4,58 @@ import { useEffect, useState } from "react";
 import Layout from "../components/template/Layout"
 import ButtonBasic from "../components/template/Buttons/ButtonBasisc"
 import Section from "../components/template/Section";
-
-import * as teste from '../components/testes';
 import { ThemeColors } from "./services/tema/themeColors";
 
 
 
-export default function Providers() {
+export async function getStaticProps(){
+  const resp = await fetch('http://localhost:3000/api/providers')
+  const providers = await resp.json()
+  return { 
+    props: {providers} 
+  }
+}
+
+
+export default function Providers(props) {
   const themeColors = ThemeColors();
   const [title, setTitle] = useState<string>('Casamento')
-  const [providers, setProviders] = useState<any[]>([]);
+  const [seletctedProviders, setSelectedProviders] = useState<any[]>([]);
 
 
-  async function getProviders(provider: string){
-    setTitle(provider)    
+  function renderProviders(){
+    if(seletctedProviders.length === 0) {
+      return (
+        <Text textAlign='center'mt={10}fontSize='4xl' color={themeColors.textBaseColor}>
+          Nenhum fornecedor informado.
+        </Text> 
+      )
+    }
+    else{
+      return seletctedProviders.map(provider =>{
+        return(      
+          <Section
+            key={provider.id}
+            name={provider.name}
+            description={provider.description}
+            contact={provider.contact}
+            address={provider.address}
+            imgCompany=""
+          />
+        )
+      })
+    }
   }
 
   useEffect(() =>{
-    const type: any[] = []
-    if(title === 'Casamento') type.push(...teste.casamento) 
-    else if(title === 'Formatura') type.push(...teste.Formatura) 
-    else if(title === 'Festa Infantil') type.push(...teste.Festa_Infantil) 
-    else setProviders([])
-    
-    setProviders(type)
+    const newList: any[] = []
+    props.providers.map(provider =>{
+      if(provider.type === title)  newList.push(provider) 
+    })
+    setSelectedProviders(newList)
   }, [title])
+
+
 
   return (
     <Layout 
@@ -42,12 +69,12 @@ export default function Providers() {
         <Flex flexDirection={{base: 'column', md:'row'}}>
           <ButtonBasic
             info='Casamento'
-            onClick={() => getProviders('Casamento')}
+            onClick={() => setTitle('Casamento')}
           />
 
           <ButtonBasic
             info='Festa Infantil'
-            onClick={() => getProviders('Festa Infantil')}
+            onClick={() => setTitle('Festa Infantil')}
           />         
         </Flex>
 
@@ -71,28 +98,9 @@ export default function Providers() {
       <Text m={4} fontSize='2xl' color={themeColors.textBaseColor}>
         {title}
       </Text>
+        
+      {renderProviders()}
 
-
-      {providers.map(provider =>{
-        return(
-            <Section
-              key={provider.id}
-              name={provider.name}
-              description={provider.description}
-              contact={provider.contact}
-              address={provider.address}
-              imgCompany=""
-            />
-        )
-      })}
-
-      {providers.length === 0 ? 
-        <Text textAlign='center'mt={10}fontSize='4xl' color={themeColors.textBaseColor}>
-          Nenhum fornecedor informado.
-        </Text> 
-      : 
-        null
-      }
     </Layout>
   )
 }

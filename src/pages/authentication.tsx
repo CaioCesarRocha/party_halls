@@ -7,6 +7,12 @@ import * as errorAuth from "../components/auth/ErrorsAuthMsg";
 import useAuth from "../data/hooks/useAuth";
 
 
+
+export function getStaticProps(){
+    return { props:{} }
+  }
+
+
 export default function Authetication() {
     const {registerUser, loginNormal, loginGoogle} = useAuth()
 

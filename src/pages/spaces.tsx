@@ -16,7 +16,7 @@ export function getStaticProps(){
 }
 
 
-export default function Home() {
+export default function Spaces() {
   const themeColors = ThemeColors();
   const [typeGallery, setTypeGallery] = useState<'INTERN' | 'EXTERN'>('INTERN')
 

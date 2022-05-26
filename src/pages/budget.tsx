@@ -14,7 +14,7 @@ export function getStaticProps(){
   }
 
 
-export default function Budget() {
+export default function Budget(props) {
     const themeColors = ThemeColors();
 
     const formik  = useFormik({
