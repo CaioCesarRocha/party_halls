@@ -1,30 +1,33 @@
 import {Flex, Box } from "@chakra-ui/react";
 import { useState } from "react";
 
-import { ThemeColors } from "./services/tema/themeColors";
 import Layout from "../components/template/Layout"
 import Gallery from '../components/template/Gallery';
 import ButtonBasic from "../components/template/Buttons/ButtonBasisc";
 import GalleryOpen from "../components/template/GalleryOpen";
 
 
-export function getStaticProps(){
-  return {
-    props:{
+export async function getStaticProps(){
+  console.log('passei no static')
+  const resp = await fetch('http://localhost:3000/api/spacesIntern')
+  const spacesIntern = await resp.json()
+  const resp1 = await fetch('http://localhost:3000/api/spacesExtern')
+  const spacesExtern= await resp1.json()
+    return { 
+      props: {
+          spacesIntern, spacesExtern     
+        } 
     }
-  }
 }
 
 
-export default function Spaces() {
-  const themeColors = ThemeColors();
+export default function Spaces(props) {
   const [typeGallery, setTypeGallery] = useState<'INTERN' | 'EXTERN'>('INTERN')
 
   return (
     <Layout 
       title="Espaço Disponível"
-      subtitle="Conheça todas áreas disponíveis para o evento"
-      
+      subtitle="Conheça todas áreas disponíveis para o evento"   
     > 
       <Box w='100%'  >
         <Flex flexDirection='row' justifyContent='space-between'>
@@ -40,15 +43,19 @@ export default function Spaces() {
             />
           </Flex>  
 
-          <GalleryOpen title={typeGallery} />
+          <GalleryOpen 
+            title={typeGallery} 
+            spacesIntern={props.spacesIntern}
+            spacesExtern={props.spacesExtern}
+          />
         </Flex>
            
         <Gallery
           title={typeGallery}
+          spacesIntern={props.spacesIntern}
+          spacesExtern={props.spacesExtern}
         />
-      </Box>
-         
-     
+      </Box>            
     </Layout>
   )
 }

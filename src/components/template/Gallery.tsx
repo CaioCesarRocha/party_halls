@@ -1,45 +1,13 @@
-import {Flex, Container} from "@chakra-ui/react";
+import {Flex, Container, Image} from "@chakra-ui/react";
 import Imgix from "react-imgix";
 
 
 export type typeGallery ={
-    title: 'INTERN' | 'EXTERN' 
+    title: 'INTERN' | 'EXTERN', 
+    spacesIntern: any[],
+    spacesExtern: any[]
 }
-
-export default function Gallery(props: typeGallery) {
-
-    const ImagesIntern = [
-        {id: 1, image: 'https://picsum.photos/300/300'},
-        {id: 2, image: 'https://picsum.photos/300/300'},
-        {id: 3, image: 'https://picsum.photos/300/300'},
-        {id: 4, image: 'https://picsum.photos/300/300'},
-        {id: 5, image: 'https://picsum.photos/300/300'},
-        {id: 6, image: 'https://picsum.photos/300/300'},
-        {id: 7, image: 'https://picsum.photos/300/300'},
-        {id: 8, image: 'https://picsum.photos/300/300'},
-    ]
-
-    const ImagesExtern = [
-        {id: 1, image:'https://picsum.photos/720/720'},
-        {id: 2, image:'https://picsum.photos/720/720'},
-        {id: 3, image:'https://picsum.photos/720/720'},
-        {id: 4, image:'https://picsum.photos/720/720'},
-        {id: 5, image:'https://picsum.photos/720/720'},
-        {id: 6, image:'https://picsum.photos/720/720'},
-        {id: 7, image:'https://picsum.photos/720/720'},
-        {id: 8, image:'https://picsum.photos/720/720'},
-    ]
-
-
-    return(     
-        <Flex
-            display='grid' gridTemplateColumns='repeat(auto-fill, minmax(20rem, 1fr))'
-            mt={5} 
-        >          
-            {props.title === 'INTERN' ?                  
-                ImagesIntern.map((img) => (
-                    <Container m={0} p={2} key={img.id}>                 
-                        <Imgix                           
+/*    <Imgix                           
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
                             src={img.image}
                             imgixParams={{
@@ -48,23 +16,36 @@ export default function Gallery(props: typeGallery) {
                             }}                               
                             width={500}
                             height={500}
+                        />*/
+
+export default function Gallery(props: typeGallery) {
+
+    return(     
+        <Flex
+            display='grid' gridTemplateColumns='repeat(auto-fill, minmax(20rem, 1fr))'
+            mt={5} 
+        >          
+            {props.title === 'INTERN' ?                  
+                props.spacesIntern.map((img) => (
+                    <Container m={0} p={2} key={img.id}>                 
+                        <Image
+                            sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            w={{base:250, sm:400}} h={{base:250, sm:400}}
+                            src={img.image}
+                            alt="Foto do espaço"
                         />
+
                     </Container>
                 ))                        
             :
-                ImagesExtern.map((img) => (
+                props.spacesExtern.map((img) => (
                     <Container m={0} p={2} key={img.id}>               
-                        <Imgix     
+                         <Image
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            w={{base:250, sm:400}} h={{base:250, sm:400}}
                             src={img.image}
-                            title={'Carrousel'}
-                            imgixParams={{
-                                fit: "crop",
-                                fm: "jpg"
-                            }}
-                            width={500}
-                            height={500}
-                        />                  
+                            alt="Foto do espaço"
+                        />           
                     </Container>
                 ))            
             }      
