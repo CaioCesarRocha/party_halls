@@ -1,5 +1,5 @@
 
-import {Text, Box, Image, AspectRatio, Icon} from "@chakra-ui/react";
+import {Text, Box, Image, Icon} from "@chakra-ui/react";
 import Layout from "../components/template/Layout"
 
 import * as icon from '../components/Icons'
