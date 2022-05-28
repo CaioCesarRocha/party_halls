@@ -30,7 +30,7 @@ export default function Gallery(props: typeGallery) {
                     <Container m={0} p={2} key={img.id}>                 
                         <Image
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
-                            w={{base:250, sm:400}} h={{base:250, sm:400}}
+                            w={{base:250, sm:400}} h={{base:230, sm:350}}
                             src={img.image}
                             alt="Foto do espaço"
                         />
@@ -42,7 +42,7 @@ export default function Gallery(props: typeGallery) {
                     <Container m={0} p={2} key={img.id}>               
                          <Image
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
-                            w={{base:250, sm:400}} h={{base:250, sm:400}}
+                            w={{base:250, sm:400}} h={{base:230, sm:350}}
                             src={img.image}
                             alt="Foto do espaço"
                         />           

@@ -8,7 +8,6 @@ import GalleryOpen from "../components/template/GalleryOpen";
 
 
 export async function getStaticProps(){
-  console.log('passei no static')
   const resp = await fetch('http://localhost:3000/api/spacesIntern')
   const spacesIntern = await resp.json()
   const resp1 = await fetch('http://localhost:3000/api/spacesExtern')
