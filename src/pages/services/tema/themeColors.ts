@@ -19,7 +19,7 @@ export function ThemeColors(){            //light     //dark
 
     //cor Buttons da gallery (tela Spaces)
     const bgButtonGallery = useColorModeValue("teal.900", "teal.500")
-    const textButtonGallery = useColorModeValue("gray.100", "gray.800")
+    const textButtonGallery = useColorModeValue("gray.200", "gray.800")
     const hoverBGButtonGallery = useColorModeValue("teal.500", "teal.800")
     
     //cor do Form #010d1a, #012345

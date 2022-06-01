@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import 'firebase/auth';
+import 'firebase/firestore';
 
 
 if(!firebase.apps.length){ //se nao tiver nenhum firebase on, ent é necessário inicialiar

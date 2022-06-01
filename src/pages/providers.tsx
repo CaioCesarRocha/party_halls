@@ -7,7 +7,6 @@ import Section from "../components/template/Section";
 import { ThemeColors } from "./services/tema/themeColors";
 
 
-
 export async function getStaticProps(){
   const resp = await fetch('http://localhost:3000/api/providers')
   const providers = await resp.json()
@@ -32,7 +31,7 @@ export default function Providers(props) {
       )
     }
     else{
-      return seletctedProviders.map(provider =>{
+      return seletctedProviders?.map(provider =>{
         return(      
           <Section
             key={provider.id}
@@ -49,7 +48,7 @@ export default function Providers(props) {
 
   useEffect(() =>{
     const newList: any[] = []
-    props.providers.map(provider =>{
+    props.providers?.map(provider =>{
       if(provider.type === title)  newList.push(provider) 
     })
     setSelectedProviders(newList)

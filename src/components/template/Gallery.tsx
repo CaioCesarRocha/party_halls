@@ -26,7 +26,7 @@ export default function Gallery(props: typeGallery) {
             mt={5} 
         >          
             {props.title === 'INTERN' ?                  
-                props.spacesIntern.map((img) => (
+                props.spacesIntern?.map((img) => (
                     <Container m={0} p={2} key={img.id}>                 
                         <Image
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -38,7 +38,7 @@ export default function Gallery(props: typeGallery) {
                     </Container>
                 ))                        
             :
-                props.spacesExtern.map((img) => (
+                props.spacesExtern?.map((img) => (
                     <Container m={0} p={2} key={img.id}>               
                          <Image
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
