@@ -1,4 +1,4 @@
-import { BiHome, BiBriefcaseAlt, BiLogOutCircle, BiErrorCircle, BiMenu} from "react-icons/bi";
+import { BiHome, BiBriefcaseAlt, BiLogOutCircle, BiErrorCircle, BiMenu, BiCheckCircle} from "react-icons/bi";
 import { MdPeople, MdCreditCard, MdMonetizationOn, MdLocationOn } from "react-icons/md";
 import { ImImages, ImGoogle3,ImPencil} from "react-icons/im";
 import {GiBalloons } from "react-icons/gi";
@@ -12,6 +12,8 @@ export const iconOut = ( <BiLogOutCircle /> )
 export const iconProviders = ( <BiBriefcaseAlt/> )
 
 export const iconMenu = ( <BiMenu/> )
+
+export const iconSuccess = ( <BiCheckCircle/> )
 
 
 export const iconSpace = ( <ImImages/> )

@@ -1,4 +1,4 @@
-import {Flex, Box, Button, Image, Text, Input} from "@chakra-ui/react";
+import {Flex, Box, Button, Image, Text, Input, Icon} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import Layout from "../components/template/Layout"
@@ -14,32 +14,30 @@ export default function PerfilUser() {
   const handleUsers = useUsers()
   const themeColors = ThemeColors()
   const [nickname, setNickname] = useState('')
-  const [checkUser, setCheckUser] = useState<User>(User.empty())
+  const [ renderSuccessChange, setRenderSuccessChange] = useState<boolean>(false)
+
  
+  useEffect(() =>{ 
+      const actualUser = new User(user?.email, user?.name)
+      handleUsers.getOneUser(actualUser)
+  }, [])
+
   useEffect(() =>{
+    console.log('passei no effect de baixo')
     setNickname(handleUsers?.userLogged?.nickname)
   }, [handleUsers.userLogged.nickname])
 
 
-
-  useEffect(()  =>{
-    const fetchData = async() =>{
-      
-     //setCheckUser()
-      await handleUsers.getOneUser(user.email)
-      if(handleUsers.noCreate === true) {
-        console.log('PASSEI NO CRIAR')
-        /*const newUser = new User(user?.uid, user?.email, user?.name)
-        handleUsers.saveUser(newUser)*/
-      }
-      //console.log('GET ONE', handleUsers.userLogged)
+  async function changeNickname (nickname: string){
+    if(handleUsers.userLogged.id){
+      const updateUser = new User( handleUsers.userLogged?.email, nickname, handleUsers.userLogged.id, )
+      await handleUsers.updateUser(updateUser)
+    }else{
+      const newUser = new User(handleUsers.userLogged?.email, nickname )
+      await handleUsers.saveUser(newUser)
     }
-    
-    fetchData()
-    
-  }, [handleUsers.userLogged.email]);
-
-
+    setRenderSuccessChange(true)   
+  }
 
 
   function renderSubtitle(subtitle: string){
@@ -84,7 +82,7 @@ export default function PerfilUser() {
           <Input
             size='sm' rounded='full' width={{base: 44 , sm: 96}} ml={{base: 0, sm: 3}}
             bgColor={themeColors.bgButtonGallery} color={themeColors.textButtonGallery} 
-            value={handleUsers?.userLogged.email} type='text' readOnly={true}
+            value={handleUsers.userLogged.email} type='text' readOnly={true}
           />
         </Flex>
         <Flex flexDirection={{base: 'column', sm: 'row'}} pl={5} pt={3}>
@@ -95,11 +93,21 @@ export default function PerfilUser() {
             onChange={e => setNickname(e.target.value)}
             value={nickname} type='text'
           />
-          <Button ml={1} p={0} size='sm' w={6} mt={{base: 1, sm: 0}}
-            color={themeColors.textButtonGallery} bgColor={themeColors.bgButtonGallery}
-          >
-            {icons.iconPencil}          
-          </Button>
+          <Flex flexDirection='row'>
+            <Button ml={1} p={0} size='sm' w={6} mt={{base: 1, sm: 0}}
+              color={themeColors.textButtonGallery} bgColor={themeColors.bgButtonGallery}
+              onClick={() => changeNickname(nickname)}
+            >
+              {icons.iconPencil}          
+            </Button>
+            {renderSuccessChange ? 
+                <Icon color='green.300' ml={2} mt={{base: 1, sm: 0}} w={12} h={12}>
+                  {icons.iconSuccess}
+                </Icon>
+            : 
+              null
+            }
+          </Flex>       
         </Flex>         
       </Flex>
     )
