@@ -1,5 +1,5 @@
 import {Flex, Box, Button, Image, Text, Input, Icon} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import Layout from "../components/template/Layout"
 import { ThemeColors } from "./services/tema/themeColors";
@@ -9,41 +9,49 @@ import useAuth from '../data/hooks/useAuth';
 import User from '../core/User';
 
 
+
 export default function PerfilUser() {
   const {user} = useAuth()
   const handleUsers = useUsers()
   const themeColors = ThemeColors()
   const [nickname, setNickname] = useState('')
+  const [ renderPage, setRenderPage] = useState<boolean>(false)
   const [ renderSuccessChange, setRenderSuccessChange] = useState<boolean>(false)
 
  
-  useEffect(() =>{ 
-      const actualUser = new User(user?.email, user?.name)
-      handleUsers.getOneUser(actualUser)
-  }, [])
+ /* useEffect(() =>{ 
+    console.log('USER PERFIL', user)
+    const actualUser = new User(user?.email, user?.name)
+    handleUsers.getOneUser(actualUser)
+  }, [])*/
 
   useEffect(() =>{
-    console.log('passei no effect de baixo')
+    console.log('USE EFFECT ESTA RODANDO ANTES DE CARREGAR O CONTEXT')
     setNickname(handleUsers?.userLogged?.nickname)
-  }, [handleUsers.userLogged.nickname])
+  }, [handleUsers.userLogged?.nickname])
 
 
   async function changeNickname (nickname: string){
-    if(handleUsers.userLogged.id){
-      const updateUser = new User( handleUsers.userLogged?.email, nickname, handleUsers.userLogged.id, )
+    if(handleUsers.userLogged?.id){
+      const updateUser = new User( handleUsers.userLogged?.email, nickname, handleUsers.userLogged.id)
       await handleUsers.updateUser(updateUser)
     }else{
-      const newUser = new User(handleUsers.userLogged?.email, nickname )
+      const newUser = new User(handleUsers.userLogged?.email, nickname)
       await handleUsers.saveUser(newUser)
     }
     setRenderSuccessChange(true)   
   }
 
+  async function fillPage(){
+    const actualUser = new User(user?.email, user?.name)
+    console.log(actualUser)
+    await handleUsers.getOneUser(actualUser)
+    setRenderPage(true)
+  }
+
 
   function renderSubtitle(subtitle: string){
-    return( 
-      <Text m={2} fontSize='2xl'> {subtitle}  </Text>
-    )
+    return( <Text m={2} fontSize='2xl'> {subtitle}  </Text> )
   }
 
   function renderCardImage(){
@@ -82,7 +90,7 @@ export default function PerfilUser() {
           <Input
             size='sm' rounded='full' width={{base: 44 , sm: 96}} ml={{base: 0, sm: 3}}
             bgColor={themeColors.bgButtonGallery} color={themeColors.textButtonGallery} 
-            value={handleUsers.userLogged.email} type='text' readOnly={true}
+            value={handleUsers.userLogged?.email } type='text' readOnly={true}
           />
         </Flex>
         <Flex flexDirection={{base: 'column', sm: 'row'}} pl={5} pt={3}>
@@ -118,18 +126,27 @@ export default function PerfilUser() {
       title="Perfil do Usuário"
       subtitle="Administre as suas informações de Usuário."
     >
-      <Box width='95%' margin='0 auto' >
-        <Flex flexDirection={'column'} width='85%'>
+      { renderPage ?      
+        <Box width='95%' margin='0 auto' >
+          <Flex flexDirection={'column'} width='85%'>
 
-          {renderSubtitle('Imagem do Perfil')}
-             
-          {renderCardImage()}
+            {renderSubtitle('Imagem do Perfil')}
+              
+            {renderCardImage()}
 
-          {renderSubtitle('Dados do Perfil')}
+            {renderSubtitle('Dados do Perfil')}
 
-          {renderCardData()}   
-        </Flex>
-      </Box>
+            {renderCardData()}   
+          </Flex>
+        </Box>  
+       : 
+       <Button colorScheme='linkedin' w={40} h={10}
+        onClick={() => fillPage()}
+       >
+         Liberar Perfil
+       </Button>
+      }       
+      
     </Layout>
   )
 }

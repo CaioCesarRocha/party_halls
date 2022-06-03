@@ -1,7 +1,7 @@
 import firebase from "../data/firebase/config";
 import User from "../core/User";
 import UserRepository from "../core/UserRepository";
-import useAuth from '../data/hooks/useAuth';
+
 
 export default class CollectionUser implements UserRepository {
 //convertando a classe user para poder salvar no banco, e dps os dados banco convertido para user na classe

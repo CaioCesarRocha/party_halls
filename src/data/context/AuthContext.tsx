@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import route from 'next/router';
 import Cookies from 'js-cookie';
 
-import User from '../model/User'
+import User from '../model/User';
 
 
 interface AuthContextProps{
@@ -50,9 +50,12 @@ export function AuthProvider(props){
     const [user, setUser] = useState<User>(null)
 
     async function configSession(userFirebase){
+        
         if(userFirebase?.email){
             const userLogged = await normalizeUser(userFirebase)
-            setUser(userLogged) 
+            console.log('SESSION - NORMALIZED USER', userLogged)
+            await setUser(userLogged) 
+            console.log('SESSION USER FINAL', user)
             handleCookie(true)
             setLoading(false)
             return userLogged.email //será usado para detectar quando o usuario mudou

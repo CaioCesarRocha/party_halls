@@ -1,9 +1,10 @@
 import {Image} from "@chakra-ui/react"
 import Link from 'next/link'
+
 import useAuth from "../../data/hooks/useAuth"
 
-export default function AvatarUser() {
 
+export default function AvatarUser() {
     const {user} = useAuth()
 
     return(

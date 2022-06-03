@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import User from '../../core/User';
 import UserRepository from "../../core/UserRepository";
@@ -8,6 +8,7 @@ import CollectionUser from '../../db/CollectionUser';
 export default function useUsers(){
     const repo: UserRepository = new CollectionUser()
     const [userLogged, setUserLogged] = useState<User>(User.empty())
+
     
 
     async function saveUser(user: User){
