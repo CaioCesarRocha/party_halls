@@ -43,8 +43,10 @@ export default function PerfilUser() {
   }
 
   async function fillPage(){
-    const actualUser = new User(user?.email, user?.name)
-    console.log(actualUser)
+    var actualUser = new User(user?.email, user?.name)
+
+    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome') 
+
     await handleUsers.getOneUser(actualUser)
     setRenderPage(true)
   }
@@ -61,7 +63,7 @@ export default function PerfilUser() {
       >
         <Image
           w={130} h={130} rounded='full' mt={{base: 4, md: 2}} m={2}
-          src={user?.imgUrl ?? ''}
+          src={user?.imgUrl ?? '/images/randomUser.png'}
           alt='Imagem do usuário'
         />
         <Flex flexDirection='column' pt={{base: 5, md: 10}} 
