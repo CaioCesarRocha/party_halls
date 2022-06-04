@@ -1,7 +1,8 @@
 import {Flex, Box, Button, Image, Text, Input, Icon} from "@chakra-ui/react";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-import Layout from "../components/template/Layout"
+import Layout from "../components/template/Layout";
+import RenderModal from "../components/template/Modal";
 import { ThemeColors } from "./services/tema/themeColors";
 import  *  as icons from "../components/Icons";
 import useUsers from "../data/hooks/useUsers";
@@ -18,15 +19,8 @@ export default function PerfilUser() {
   const [ renderPage, setRenderPage] = useState<boolean>(false)
   const [ renderSuccessChange, setRenderSuccessChange] = useState<boolean>(false)
 
- 
- /* useEffect(() =>{ 
-    console.log('USER PERFIL', user)
-    const actualUser = new User(user?.email, user?.name)
-    handleUsers.getOneUser(actualUser)
-  }, [])*/
 
   useEffect(() =>{
-    console.log('USE EFFECT ESTA RODANDO ANTES DE CARREGAR O CONTEXT')
     setNickname(handleUsers?.userLogged?.nickname)
   }, [handleUsers.userLogged?.nickname])
 
@@ -69,11 +63,10 @@ export default function PerfilUser() {
         <Flex flexDirection='column' pt={{base: 5, md: 10}} 
           alignItems={{base: 'center', md: 'start'}} textAlign={{base: 'center', md: 'start'}}             
         >
-          <Button bgColor={themeColors.bgButtonGallery} ml={{base: 0, sm: 5}} w={40}
-            color={themeColors.textButtonGallery} 
-          >
-              Alterar imagem
-          </Button>
+          <RenderModal
+            textOpenButton="Alterar Avatar"
+            title="Avatar do Usuário"
+          />
           <Text p={5} color='yellow.400' fontSize={{base: 12, md: 15}}> 
             A imagem deve estar no formato JPEG, PNG ou GIF e não pode ter mais do que 10 MB. 
           </Text>
@@ -142,12 +135,10 @@ export default function PerfilUser() {
           </Flex>
         </Box>  
        : 
-       <Button colorScheme='linkedin' w={40} h={10}
-        onClick={() => fillPage()}
-       >
-         Liberar Perfil
-       </Button>
-      }       
+        <Button colorScheme='linkedin' w={40} h={10} onClick={() => fillPage()} >
+          Liberar Perfil
+        </Button>
+      }  
       
     </Layout>
   )

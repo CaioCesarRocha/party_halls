@@ -53,9 +53,7 @@ export function AuthProvider(props){
         
         if(userFirebase?.email){
             const userLogged = await normalizeUser(userFirebase)
-            console.log('SESSION - NORMALIZED USER', userLogged)
             await setUser(userLogged) 
-            console.log('SESSION USER FINAL', user)
             handleCookie(true)
             setLoading(false)
             return userLogged.email //será usado para detectar quando o usuario mudou

@@ -7,12 +7,8 @@ import { ThemeColors } from "./services/tema/themeColors";
 
 
 export function getStaticProps(){
-  return {
-    props:{
-    }
-  }
+  return { props:{} }
 }
-
 
 export default function Home() {
   const themeColors = ThemeColors();
@@ -35,13 +31,12 @@ export default function Home() {
           />
         </video>
       </Box>
-                  
-        
+                     
       <Image  
         position='absolute' 
-        display={{base: 'none', md: 'block'}}     
+        display={{base: 'none', lg: 'block'}}     
         w={{base:'20', md:'24', lg:'36' }} h={{base: '20', md:'24', lg:'36' }}    
-        src={themeColors.teste}
+        src={themeColors.logoEvento}
         alt='Logo do Evento'
       />
 

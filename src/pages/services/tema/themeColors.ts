@@ -9,9 +9,9 @@ export function ThemeColors(){            //light     //dark
     const bgHoverColor = useColorModeValue("gray.200", "gray.600")
     const textHoverColor = useColorModeValue("gray.500", "gray.900")
 
-    const bgMenu = useColorModeValue("#acacb0", "gray.900") 
+    const bgMenu = useColorModeValue("blackAlpha.600", "gray.900") 
 
-    const exitItemColor = useColorModeValue("red.600", "red.300")
+    const exitItemColor = useColorModeValue("red.900", "red.300")
     const exitHoverItem = useColorModeValue("red.300",  "red.800")
 
     //cor do switchTheme
@@ -23,10 +23,10 @@ export function ThemeColors(){            //light     //dark
     const hoverBGButtonGallery = useColorModeValue("teal.500", "teal.800")
     
     //cor do Form #010d1a, #012345
-    const bgForm = useColorModeValue( 'linear-gradient(to right, #acacb0, #404042  )'
+    const bgForm = useColorModeValue( 'linear-gradient(to right, #acacb0, #404042)'
     , 'linear-gradient(to right, #171923, #3e495e)')
 
-    const teste = useColorModeValue('/Images/logo_house.png', '/Images/logo_house_white.png')
+    const logoEvento = useColorModeValue('/Images/logo_house.png', '/Images/logo_house_white.png')
 
     
 
@@ -38,7 +38,7 @@ export function ThemeColors(){            //light     //dark
         bgSwitchTheme,
         bgButtonGallery, textButtonGallery, hoverBGButtonGallery,
         bgForm,
-        teste
+        logoEvento
     }
 
     return colors;

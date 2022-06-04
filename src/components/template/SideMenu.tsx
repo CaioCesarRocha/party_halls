@@ -39,7 +39,7 @@ export default function SideMenu (){
                 </List>
 
                 <List 
-                    color={themeColors.exitItemColor} bgColor={themeColors.bgMenu}
+                    color={themeColors.exitItemColor} bgColor='blackAlpha.400'
                 >
                     <MenuItem 
                         text="Sair" 
