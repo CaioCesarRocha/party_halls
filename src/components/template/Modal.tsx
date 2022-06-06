@@ -22,14 +22,19 @@ export default function RenderModal(props: propsRenderModal){
 
     function sendAvatar(){
       const dataUser = new FormData();
+      
 
-      if(selectedFile) dataUser.append('avatar', selectedFile)
+      if(selectedFile) {
+        dataUser.append('avatar', selectedFile)
 
-      fetch("http://localhost:3000/api/receiveAvatar", {
-        method: "POST",
-        body: selectedFile
-      });
-      console.log('avatar', selectedFile)
+        fetch("http://localhost:3000/api/receiveAvatar", {
+          method: "POST",
+          body: selectedFile.webkitRelativePath
+        });
+        console.log('avatar', selectedFile)
+      } else{
+        alert('Selecione uma foto')
+      }
     }
 
     return (

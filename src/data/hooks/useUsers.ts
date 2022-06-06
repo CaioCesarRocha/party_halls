@@ -8,8 +8,7 @@ import CollectionUser from '../../db/CollectionUser';
 export default function useUsers(){
     const repo: UserRepository = new CollectionUser()
     const [userLogged, setUserLogged] = useState<User>(User.empty())
-
-    
+   
 
     async function saveUser(user: User){
         await repo.save(user)

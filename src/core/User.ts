@@ -7,12 +7,12 @@ export default class User {
 
     constructor( email: string, nickname: string, id: string = null ){   
         this.#email = email;
-        this.#nickname = nickname;   
+        this.#nickname = nickname; 
         this.#id = id;   
     }
 
     static empty(){ //setando o user inicial como vazio
-        return new User('', '')
+        return new User('', '',)
     }
 
     get id(){
@@ -26,5 +26,6 @@ export default class User {
     get nickname(){
         return this.#nickname
     }
+
 
 }

@@ -9,7 +9,7 @@ export default class CollectionUser implements UserRepository {
         toFirestore(user: User){
             return{
                 email: user.email,
-                nickname: user.nickname        
+                nickname: user.nickname,      
             }
         },
         fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot, options: firebase.firestore.SnapshotOptions) :User {

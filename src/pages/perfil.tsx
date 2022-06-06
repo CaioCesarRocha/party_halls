@@ -39,7 +39,7 @@ export default function PerfilUser() {
   async function fillPage(){
     var actualUser = new User(user?.email, user?.name)
 
-    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome') 
+    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome' ) 
 
     await handleUsers.getOneUser(actualUser)
     setRenderPage(true)
