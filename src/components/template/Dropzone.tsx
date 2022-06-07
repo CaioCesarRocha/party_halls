@@ -35,7 +35,7 @@ const Dropzone: React.FC<propsDropzone>= ({onFileUploaded}) => {
             h={300} w={300} borderRadius={10} outline={0}
             bgColor={themeColors.bgMenu} rounded='full'
         >
-            <input {...getInputProps()} accept='image/*'/>
+            <input {...getInputProps()} accept='image/*' name="avatar"/>
 
             {selectedFileUrl ?
                 <Image 

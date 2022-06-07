@@ -2,7 +2,6 @@ import {
     Modal, ModalOverlay, ModalContent,   ModalCloseButton, useDisclosure,
     ModalHeader, ModalFooter, ModalBody, Button, Text, Image
   } from '@chakra-ui/react'
-
 import { useState } from "react";
 
 import Dropzone from './Dropzone';
@@ -13,6 +12,7 @@ interface propsRenderModal{
     textOpenButton: string
     title: string
     avatar?: string,
+    email: string
 }
 
 export default function RenderModal(props: propsRenderModal){
@@ -21,17 +21,15 @@ export default function RenderModal(props: propsRenderModal){
     const [selectedFile, setSelectedFile] = useState<File>();
 
     function sendAvatar(){
-      const dataUser = new FormData();
-      
-
       if(selectedFile) {
-        dataUser.append('avatar', selectedFile)
+        const dataUser = new FormData();
+        dataUser.append('email', props.email)
+        dataUser.append('avatar', selectedFile)   
 
         fetch("http://localhost:3000/api/receiveAvatar", {
           method: "POST",
-          body: selectedFile.webkitRelativePath
+          body: dataUser
         });
-        console.log('avatar', selectedFile)
       } else{
         alert('Selecione uma foto')
       }

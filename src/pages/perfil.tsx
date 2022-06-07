@@ -10,7 +10,6 @@ import useAuth from '../data/hooks/useAuth';
 import User from '../core/User';
 
 
-
 export default function PerfilUser() {
   const {user} = useAuth()
   const handleUsers = useUsers()
@@ -26,20 +25,25 @@ export default function PerfilUser() {
 
 
   async function changeNickname (nickname: string){
-    if(handleUsers.userLogged?.id){
-      const updateUser = new User( handleUsers.userLogged?.email, nickname, handleUsers.userLogged.id)
+    const userLogged = handleUsers?.userLogged;
+    if(userLogged?.id){
+      const updateUser = new User(userLogged?.email, nickname, userLogged?.avatar, userLogged.id)
       await handleUsers.updateUser(updateUser)
-    }else{
-      const newUser = new User(handleUsers.userLogged?.email, nickname)
-      await handleUsers.saveUser(newUser)
+    }
+    else{
+      var newUser = new User(userLogged?.email, nickname, '/uploads/2bc98b08e7e3-randomUser.png') 
+      
+      if(user?.imgUrl) newUser = new User(userLogged?.email, nickname, user.imgUrl)
+  
+      await handleUsers.saveUser(newUser)     
     }
     setRenderSuccessChange(true)   
   }
 
   async function fillPage(){
-    var actualUser = new User(user?.email, user?.name)
+    var actualUser = new User(user?.email, user?.name,'/uploads/2bc98b08e7e3-randomUser.png' )
 
-    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome' ) 
+    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome', '/uploads/2bc98b08e7e3-randomUser.png') 
 
     await handleUsers.getOneUser(actualUser)
     setRenderPage(true)
@@ -57,7 +61,7 @@ export default function PerfilUser() {
       >
         <Image
           w={130} h={130} rounded='full' mt={{base: 4, md: 2}} m={2}
-          src={user?.imgUrl ?? '/images/randomUser.png'}
+          src={user?.imgUrl ?? '/uploads/2bc98b08e7e3-randomUser.png'}
           alt='Imagem do usuário'
         />
         <Flex flexDirection='column' pt={{base: 5, md: 10}} 
@@ -66,6 +70,7 @@ export default function PerfilUser() {
           <RenderModal
             textOpenButton="Alterar Avatar"
             title="Avatar do Usuário"
+            email={handleUsers?.userLogged?.email}
           />
           <Text p={5} color='yellow.400' fontSize={{base: 12, md: 15}}> 
             A imagem deve estar no formato JPEG, PNG ou GIF e não pode ter mais do que 10 MB. 
