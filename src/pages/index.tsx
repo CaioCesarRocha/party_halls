@@ -5,13 +5,13 @@ import Layout from "../components/template/Layout"
 import * as icon from '../components/Icons'
 import { ThemeColors } from "./services/tema/themeColors";
 
-
 export function getStaticProps(){
   return { props:{} }
 }
 
 export default function Home() {
   const themeColors = ThemeColors();
+
   //https://casalucci.com.br/casamento/wp-content/uploads/2021/08/01-Espaco-Casa-Lucci-Morumbi-1024x683.png
   
   return (

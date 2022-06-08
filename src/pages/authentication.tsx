@@ -1,6 +1,6 @@
 import {Flex, Text, Button, Box, Image} from "@chakra-ui/react"
 
-import { useState , useEffect} from "react"
+import { useState , useEffect, useContext} from "react"
 import AuthInput from "../components/auth/AuthInput";
 import { iconGoogle } from "../components/Icons"
 import * as errorAuth from "../components/auth/ErrorsAuthMsg";
@@ -22,7 +22,7 @@ export default function Authetication() {
     const [ confirmPassword, setConfirmPassword] = useState('')
     const [ notRenderConfirm, setNotRenderConfirm] = useState<boolean>(false)
     const [ msgError, setMsgError] = useState<string>(null)
-    
+  
 
     const handlSendData = async() =>{
         try{
@@ -64,10 +64,8 @@ export default function Authetication() {
                     {screen === 'Login' ? 'Entre com a sua conta' : 'Cadastra-se na plataforma'}
                 </Text>
 
-
                 <errorAuth.ErrorMsg mensage={msgError} /> 
       
-
                 <AuthInput
                     label="Email"
                     value={email}

@@ -1,6 +1,9 @@
+import { useContext } from "react";
+
 import firebase from "../data/firebase/config";
 import User from "../core/User";
 import UserRepository from "../core/UserRepository";
+
 
 
 export default class CollectionUser implements UserRepository {
@@ -9,14 +12,18 @@ export default class CollectionUser implements UserRepository {
         toFirestore(user: User){
             return{
                 email: user.email,
-                nickname: user.nickname,      
+                nickname: user.nickname,
+                avatar: user.avatar      
             }
         },
         fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot, options: firebase.firestore.SnapshotOptions) :User {
             const data = snapshot.data(options)
-            return new User(data.email, data.nickname, snapshot.id)
+            return new User(data.email, data.nickname, data.avatar, snapshot.id)
         }
     }
+
+
+
 
 
     async save(user: User): Promise<User>{
@@ -26,8 +33,15 @@ export default class CollectionUser implements UserRepository {
     }
 
     async update(user: User): Promise<User>{
-        await this.collection().doc(user.id).set(user)
-        return user 
+        if(user?.id){
+            await this.collection().doc(user.id).set(user)
+            return user 
+        } else{
+            console.log("usaravio enviado" ,user)
+        }
+        
+        //
+        
     }
 
 
@@ -38,7 +52,7 @@ export default class CollectionUser implements UserRepository {
                 const result = query.docs[0].data()
                 return result   
             }catch{
-                const newUser = new User(user?.email, user?.nickname)
+                const newUser = new User(user?.email, user?.nickname, user?.avatar)
                 return newUser
             }
         }

@@ -14,7 +14,7 @@ export default class User {
     }
 
     static empty(){ //setando o user inicial como vazio
-        return new User('', '', '/uploads/2bc98b08e7e3-randomUser.png')
+        return new User('', '', '/images/randomUser.png')
     }
 
     get id(){

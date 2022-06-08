@@ -1,5 +1,5 @@
 import {Flex, Box, Button, Image, Text, Input, Icon} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Layout from "../components/template/Layout";
 import RenderModal from "../components/template/Modal";
@@ -8,6 +8,7 @@ import  *  as icons from "../components/Icons";
 import useUsers from "../data/hooks/useUsers";
 import useAuth from '../data/hooks/useAuth';
 import User from '../core/User';
+import {ContextUserLogged} from '../data/context/userLoggedContext'
 
 
 export default function PerfilUser() {
@@ -15,23 +16,24 @@ export default function PerfilUser() {
   const handleUsers = useUsers()
   const themeColors = ThemeColors()
   const [nickname, setNickname] = useState('')
-  const [ renderPage, setRenderPage] = useState<boolean>(false)
+  const [ renderPage, setRenderPage] = useState<boolean>(true)
   const [ renderSuccessChange, setRenderSuccessChange] = useState<boolean>(false)
+  const {stateUserLogged, dispatch} = useContext(ContextUserLogged);
 
 
   useEffect(() =>{
-    setNickname(handleUsers?.userLogged?.nickname)
-  }, [handleUsers.userLogged?.nickname])
+    setNickname(stateUserLogged.userLogged.user?.nickname)
+  }, [stateUserLogged.userLogged.user?.nickname])
 
-
+  
   async function changeNickname (nickname: string){
-    const userLogged = handleUsers?.userLogged;
+    const userLogged = stateUserLogged.userLogged.user;
     if(userLogged?.id){
       const updateUser = new User(userLogged?.email, nickname, userLogged?.avatar, userLogged.id)
       await handleUsers.updateUser(updateUser)
     }
     else{
-      var newUser = new User(userLogged?.email, nickname, '/uploads/2bc98b08e7e3-randomUser.png') 
+      var newUser = new User(userLogged?.email, nickname, '/images/randomUser.png') 
       
       if(user?.imgUrl) newUser = new User(userLogged?.email, nickname, user.imgUrl)
   
@@ -40,14 +42,15 @@ export default function PerfilUser() {
     setRenderSuccessChange(true)   
   }
 
-  async function fillPage(){
-    var actualUser = new User(user?.email, user?.name,'/uploads/2bc98b08e7e3-randomUser.png' )
+  /*async function fillPage(){
 
-    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome', '/uploads/2bc98b08e7e3-randomUser.png') 
+    /*var actualUser = new User(user?.email, user?.name,'/images/randomUser.png' )
+
+    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome', '/images/randomUser.png') 
 
     await handleUsers.getOneUser(actualUser)
     setRenderPage(true)
-  }
+  }*/
 
 
   function renderSubtitle(subtitle: string){
@@ -55,13 +58,15 @@ export default function PerfilUser() {
   }
 
   function renderCardImage(){
+    const userLogged = stateUserLogged.userLogged.user
+ 
     return(
       <Flex flexDirection={{base: 'column', md: 'row'}} alignItems={{base: 'center', md: 'start'}} 
         bgColor='blackAlpha.700' rounded='2xl' h={{base: 300, md: 150}}  
       >
         <Image
           w={130} h={130} rounded='full' mt={{base: 4, md: 2}} m={2}
-          src={user?.imgUrl ?? '/uploads/2bc98b08e7e3-randomUser.png'}
+          src={userLogged.avatar}
           alt='Imagem do usuário'
         />
         <Flex flexDirection='column' pt={{base: 5, md: 10}} 
@@ -70,17 +75,20 @@ export default function PerfilUser() {
           <RenderModal
             textOpenButton="Alterar Avatar"
             title="Avatar do Usuário"
-            email={handleUsers?.userLogged?.email}
+            user={new User(userLogged?.email, userLogged?.nickname, userLogged?.avatar, userLogged?.id)}
           />
           <Text p={5} color='yellow.400' fontSize={{base: 12, md: 15}}> 
             A imagem deve estar no formato JPEG, PNG ou GIF e não pode ter mais do que 10 MB. 
           </Text>
+
         </Flex>
       </Flex>
     )
   }
 
   function renderCardData(){
+    const userLogged = stateUserLogged.userLogged.user
+
     return (
       <Flex flexDirection='column'  h={{base: 225, sm: 150}} mb={2}
       bgColor='blackAlpha.700' rounded='2xl'  
@@ -90,7 +98,7 @@ export default function PerfilUser() {
           <Input
             size='sm' rounded='full' width={{base: 44 , sm: 96}} ml={{base: 0, sm: 3}}
             bgColor={themeColors.bgButtonGallery} color={themeColors.textButtonGallery} 
-            value={handleUsers.userLogged?.email } type='text' readOnly={true}
+            value={userLogged.email} type='text' readOnly={true}
           />
         </Flex>
         <Flex flexDirection={{base: 'column', sm: 'row'}} pl={5} pt={3}>
@@ -140,9 +148,7 @@ export default function PerfilUser() {
           </Flex>
         </Box>  
        : 
-        <Button colorScheme='linkedin' w={40} h={10} onClick={() => fillPage()} >
-          Liberar Perfil
-        </Button>
+        null
       }  
       
     </Layout>

@@ -1,10 +1,9 @@
 import firebase from '../firebase/config'
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import route from 'next/router';
 import Cookies from 'js-cookie';
 
 import User from '../model/User';
-
 
 interface AuthContextProps{
     user?: User,
@@ -18,6 +17,7 @@ interface AuthContextProps{
 const AuthContext= createContext<AuthContextProps>({
     
 })
+
 
 //deixando os dados da forma como a gente quer receber
 async function normalizeUser(userFirebase: firebase.User): Promise<User>{
@@ -129,7 +129,7 @@ export function AuthProvider(props){
             return () => cancel() //quando componente for desmontado ele para de observar se mudou id /\
         }else{
             setLoading(false)
-        }      
+        }     
     }, [])
 
 

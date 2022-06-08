@@ -1,16 +1,34 @@
 import {Box, List, Menu, Flex} from "@chakra-ui/react";
+import { useContext} from "react"
 
 import { ThemeColors } from "../../pages/services/tema/themeColors";
 import MenuItem from "./MenuItem";
 import Logo from './Logo';
 import  *  as icons from "../Icons";
 import useAuth from "../../data/hooks/useAuth";
+import {ContextUserLogged} from '../../data/context/userLoggedContext'
 
 export default function SideMenu (){
     const themeColors = ThemeColors();
 
     const { logoutGoogle } = useAuth();
 
+    const {stateUserLogged, dispatch} = useContext(ContextUserLogged);
+    
+    function logout(){
+        dispatch({
+            type: 'NEW',
+            payload:{
+                newUser:{
+                  id: '',
+                  email: '',
+                  nickname:  '',
+                  avatar: ''
+                }
+            }
+        })
+        logoutGoogle()
+    }
 
     return(
         <Menu >
@@ -45,7 +63,7 @@ export default function SideMenu (){
                         text="Sair" 
                         icon={icons.iconOut}
                         exit={true}
-                        onClick={logoutGoogle}
+                        onClick={() => logout()}
                     />
                 </List>            
             </Flex>
