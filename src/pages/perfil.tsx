@@ -42,17 +42,7 @@ export default function PerfilUser() {
     setRenderSuccessChange(true)   
   }
 
-  /*async function fillPage(){
-
-    /*var actualUser = new User(user?.email, user?.name,'/images/randomUser.png' )
-
-    if(!user?.name) actualUser = new User(user?.email, 'Insira um nome', '/images/randomUser.png') 
-
-    await handleUsers.getOneUser(actualUser)
-    setRenderPage(true)
-  }*/
-
-
+ 
   function renderSubtitle(subtitle: string){
     return( <Text m={2} fontSize='2xl'> {subtitle}  </Text> )
   }
@@ -133,24 +123,19 @@ export default function PerfilUser() {
     <Layout 
       title="Perfil do Usuário"
       subtitle="Administre as suas informações de Usuário."
-    >
-      { renderPage ?      
-        <Box width='95%' margin='0 auto' >
-          <Flex flexDirection={'column'} width='85%'>
+    >      
+      <Box width='95%' margin='0 auto' >
+        <Flex flexDirection={'column'} width='85%'>
 
-            {renderSubtitle('Imagem do Perfil')}
+          {renderSubtitle('Imagem do Perfil')}
               
-            {renderCardImage()}
+          {renderCardImage()}
 
-            {renderSubtitle('Dados do Perfil')}
+          {renderSubtitle('Dados do Perfil')}
 
-            {renderCardData()}   
-          </Flex>
-        </Box>  
-       : 
-        null
-      }  
-      
+          {renderCardData()}   
+        </Flex>
+      </Box>       
     </Layout>
   )
 }

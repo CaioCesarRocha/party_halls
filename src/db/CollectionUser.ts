@@ -5,7 +5,6 @@ import User from "../core/User";
 import UserRepository from "../core/UserRepository";
 
 
-
 export default class CollectionUser implements UserRepository {
 //convertando a classe user para poder salvar no banco, e dps os dados banco convertido para user na classe
     #converter = { 
@@ -24,8 +23,6 @@ export default class CollectionUser implements UserRepository {
 
 
 
-
-
     async save(user: User): Promise<User>{
         const docRef = await this.collection().add(user)
         const doc = await docRef.get()
@@ -37,10 +34,8 @@ export default class CollectionUser implements UserRepository {
             await this.collection().doc(user.id).set(user)
             return user 
         } else{
-            console.log("usaravio enviado" ,user)
+            console.log("error update collection")
         }
-        
-        //
         
     }
 
@@ -62,6 +57,7 @@ export default class CollectionUser implements UserRepository {
     async delete(user: User): Promise<void>{
         return this.collection().doc(user.id).delete()
     }
+
 
     //setando a colleção q sera utilizada e ja passando o parametro do conversor
     private collection(){

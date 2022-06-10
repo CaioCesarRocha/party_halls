@@ -1,6 +1,6 @@
 import {Image} from "@chakra-ui/react"
 import Link from 'next/link'
-import { useEffect, useState, useContext } from "react"
+import { useEffect,  useContext } from "react"
 
 import useAuth from "../../data/hooks/useAuth"
 import useUsers from "../../data/hooks/useUsers"
@@ -14,7 +14,6 @@ export default function AvatarUser() {
 
     useEffect(() =>{
         if(!stateUserLogged.userLogged.user.avatar) {
-            console.log('user', user)
             var actualUser = new User(user?.email, user?.name,'/images/randomUser.png')
             if(user?.imgUrl) actualUser = new User(user?.email, user?.name, user.imgUrl)
             if(!user?.name) actualUser = new User(user?.email, 'Insira um nome', '/images/randomUser.png') 

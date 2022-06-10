@@ -11,7 +11,6 @@ import User from '../../core/User';
 import useUsers from '../../data/hooks/useUsers'
 
 
-
 interface propsRenderModal{
     textOpenButton: string
     title: string,
