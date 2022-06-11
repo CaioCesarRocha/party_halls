@@ -66,7 +66,8 @@ export default function RenderModal(props: propsRenderModal){
             <ModalCloseButton />
             <ModalBody m='0 auto'>
               <Dropzone
-                  onFileUploaded={setSelectedFile}
+                onFileUploaded={setSelectedFile}
+                message='Adicionar novo avatar'
               />
             </ModalBody>
   

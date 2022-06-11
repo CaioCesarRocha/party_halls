@@ -8,10 +8,11 @@ import { ThemeColors } from "../../pages/services/tema/themeColors";
 
 interface propsDropzone{
     onFileUploaded: (file: File) => void;
+    message: string;
   }
   
 
-const Dropzone: React.FC<propsDropzone>= ({onFileUploaded}) => {
+const Dropzone: React.FC<propsDropzone>= ({onFileUploaded, message}) => {
     const themeColors = ThemeColors()
     const [selectedFileUrl, setSelectedFileUrl] = useState('');
 
@@ -45,11 +46,11 @@ const Dropzone: React.FC<propsDropzone>= ({onFileUploaded}) => {
                 />
             :
                 (
-                <Flex cursor='pointer' flexDirection='column' justifyContent='center' alignItems='center'>
+                <Flex cursor='pointer' flexDirection='column' justifyContent='center' alignItems='center' textAlign='center'>
                     <Icon h={45} w={45}> 
                         <FiUpload/> 
                     </Icon>
-                    Selecione um novo Avatar
+                    {message}
                 </Flex>
                 )
             }          

@@ -53,7 +53,8 @@ export default function SideMenu (){
                     <MenuItem url="/spaces" text="Espaços" icon={icons.iconSpace}/>                  
                     <MenuItem url="/providers" text="Fornecedores" icon={icons.iconProviders}/>
                     <MenuItem url="/location" text="Localização" icon={icons.iconLocation}/> 
-                    <MenuItem url="/budget" text="Orçamento" icon={icons.iconBudget}/>            
+                    <MenuItem url="/budget" text="Orçamento" icon={icons.iconBudget}/>
+                    <MenuItem url="/addPhotos" text="Add fotos" icon={icons.iconAddFiles}/>               
                 </List>
 
                 <List 
