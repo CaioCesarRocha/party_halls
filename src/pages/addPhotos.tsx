@@ -39,7 +39,7 @@ export default function AddPhotos(props) {
             subtitle="Preencha o formulário abaixo para enviar adicionar novas fotos"
         >
              <Box width='100%' margin='0 auto'>
-                <Flex flexDirection='column'>
+                <Flex flexDirection='column' >
                     <form 
                         style={{margin: '8px auto', maxWidth: '550px', padding: 32, 
                           borderRadius: 12, backgroundImage: themeColors.bgForm

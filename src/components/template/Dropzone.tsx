@@ -32,9 +32,9 @@ const Dropzone: React.FC<propsDropzone>= ({onFileUploaded, message}) => {
 
     return(
         <Flex {...getRootProps()}
-            justifyContent='center' alignItems='center'
-            h={300} w={300} borderRadius={10} outline={0}
-            bgColor={themeColors.bgMenu} rounded='full'
+            justifyContent='center' alignItems='center' bgColor={themeColors.bgMenu}
+            borderRadius={10} outline={0}  rounded='full' margin='0 auto'
+            h={{base: 200, sm: 300}} w={{base: 200, sm: 300}}      
         >
             <input {...getInputProps()} accept='image/*' name="avatar"/>
 
