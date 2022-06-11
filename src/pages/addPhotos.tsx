@@ -1,8 +1,9 @@
-import {Flex, Box, Button, FormLabel, Textarea, Select} from "@chakra-ui/react";
+import {Flex, Box, Button, FormLabel, Textarea, } from "@chakra-ui/react";
 import { useState } from "react";
 import { useFormik } from 'formik';
 
 import Layout from "../components/template/Layout";
+import ErrorForm from "../components/template/Form/ErrorForm";
 import Dropzone from "../components/template/Dropzone";
 import { ThemeColors } from "./services/tema/themeColors";
 
@@ -17,6 +18,21 @@ export function getStaticProps(){
 export default function AddPhotos(props) {
     const themeColors = ThemeColors();
     const [selectedFile, setSelectedFile] = useState<File>();
+    const [errorImg, setErrorImg] = useState<boolean>(false);
+
+
+    function sendNewPhoto(data){   
+        if(selectedFile){
+            
+            return true
+        }
+        else{
+            setErrorImg(true)
+            return false;
+        }
+    }
+
+ 
 
     const formik  = useFormik({
         initialValues: validationAddPhotos.initialValues,
@@ -24,14 +40,17 @@ export default function AddPhotos(props) {
         validationSchema: validationAddPhotos.schema,
     
         enableReinitialize: true,
-
+        
         onSubmit: async (data) => {
-            console.log('dados', data)       
-            formik.resetForm();
-            alert(`Foto ${data.description} enviado com sucesso!`);
+            let response = await sendNewPhoto(data);
+            if (response === true){     
+                formik.resetForm();
+                setErrorImg(false)
+                alert(`Foto  ${selectedFile} - ${data.description} enviado com sucesso!`);
+            }        
         }
     });
- 
+    
 
     return(
         <Layout
@@ -51,6 +70,7 @@ export default function AddPhotos(props) {
                             onFileUploaded={setSelectedFile}
                             message=' Selecionar  nova Foto'
                         />
+                        {errorImg ? <ErrorForm> É preciso selecionar uma imagem </ErrorForm> : null}
 
                         <FormLabel htmlFor='description' mt={3}> Descrição </FormLabel>
                         <Textarea
@@ -60,8 +80,9 @@ export default function AddPhotos(props) {
                             placeholder='Informação do espaço na foto'
                             size='lg' fontSize={15}
                         />
+                        {formik.errors.description && formik.touched.description && (<ErrorForm> {formik.errors.description}</ErrorForm>)}
 
-                        <Button type='submit' mt={5} >
+                        <Button type='submit' mt={5}>
                             Enviar Foto
                         </Button> 
 
