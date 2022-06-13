@@ -10,6 +10,7 @@ public/Videos
 
 # dependencies
 /node_modules
+/backend_party-halls/node_modules
 /.pnp
 .pnp.js
 
@@ -31,6 +32,7 @@ npm-debug.log*
 # local env files
 .env*.local
 .env.local
+/backend_party-halls/.env
 
 # vercel
 .vercel
