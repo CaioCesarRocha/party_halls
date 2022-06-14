@@ -1,4 +1,4 @@
-export class CreatePhotoDto {
+export declare class CreatePhotoDto {
     url: string;
     description: string;
 }

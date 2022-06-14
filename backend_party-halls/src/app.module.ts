@@ -11,7 +11,6 @@ import { ConfigModule } from '@nestjs/config';
     PhotosModule,
     MongooseModule.forRoot(process.env.MONGODB_HOST, {
       dbName: 'PartyHalls_NEST',
-      dbTable: 'Photos',
     }),
   ],
   controllers: [],
