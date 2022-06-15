@@ -27,8 +27,8 @@ let PhotosController = class PhotosController {
     findAll() {
         return this.photosService.findAll();
     }
-    findOne(id) {
-        return this.photosService.findOne(id);
+    findSpaces(typeSpace) {
+        return this.photosService.findSpaces(typeSpace);
     }
     update(id, updatePhotoDto) {
         return this.photosService.update(id, updatePhotoDto);
@@ -51,12 +51,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PhotosController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(':typeSpace'),
+    __param(0, (0, common_1.Param)('typeSpace')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], PhotosController.prototype, "findOne", null);
+], PhotosController.prototype, "findSpaces", null);
 __decorate([
     (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),

@@ -17,9 +17,14 @@ export class PhotosController {
     return this.photosService.findAll();
   }
 
-  @Get(':id')
+  /*@Get(':id')
   findOne(@Param('id') id: string) {
     return this.photosService.findOne(id);
+  }*/
+
+  @Get(':typeSpace')
+  findSpaces(@Param('typeSpace') typeSpace: string){
+    return this.photosService.findSpaces(typeSpace)
   }
 
   @Put(':id')

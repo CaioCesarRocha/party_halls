@@ -1,5 +1,4 @@
 import {Flex, Container, Image} from "@chakra-ui/react";
-import Imgix from "react-imgix";
 
 
 export type typeGallery ={
@@ -7,16 +6,6 @@ export type typeGallery ={
     spacesIntern: any[],
     spacesExtern: any[]
 }
-/*    <Imgix                           
-                            sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
-                            src={img.image}
-                            imgixParams={{
-                                fit: "crop",
-                                fm: "jpg"
-                            }}                               
-                            width={500}
-                            height={500}
-                        />*/
 
 export default function Gallery(props: typeGallery) {
 
@@ -34,16 +23,15 @@ export default function Gallery(props: typeGallery) {
                             src={img.image}
                             alt="Foto do espaço"
                         />
-
                     </Container>
                 ))                        
             :
                 props.spacesExtern?.map((img) => (
-                    <Container m={0} p={2} key={img.id}>               
+                    <Container m={0} p={2} key={img._id}>               
                          <Image
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
                             w={{base:250, sm:400}} h={{base:230, sm:350}}
-                            src={img.image}
+                            src={`/uploads/${img.url}`}
                             alt="Foto do espaço"
                         />           
                     </Container>

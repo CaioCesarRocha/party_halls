@@ -34,9 +34,9 @@ export declare class PhotosService {
     })[], Photo & import("mongoose").Document<any, any, any> & {
         _id: any;
     }, {}, PhotoDocument>;
-    findOne(id: string): import("mongoose").Query<Photo & import("mongoose").Document<any, any, any> & {
+    findSpaces(typeSpace: string): import("mongoose").Query<(Photo & import("mongoose").Document<any, any, any> & {
         _id: any;
-    }, Photo & import("mongoose").Document<any, any, any> & {
+    })[], Photo & import("mongoose").Document<any, any, any> & {
         _id: any;
     }, {}, PhotoDocument>;
     update(id: string, updatePhotoDto: UpdatePhotoDto): Promise<Photo & import("mongoose").Document<any, any, any> & {

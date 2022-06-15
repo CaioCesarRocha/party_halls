@@ -10,7 +10,7 @@ import { ConfigModule } from '@nestjs/config';
     }),
     PhotosModule,
     MongooseModule.forRoot(process.env.MONGODB_HOST, {
-      dbName: 'PartyHalls_NEST',
+      dbName: process.env.MONGODB_DB_NAME,
     }),
   ],
   controllers: [],

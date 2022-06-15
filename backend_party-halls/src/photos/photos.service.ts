@@ -22,8 +22,12 @@ export class PhotosService {
     return this.photoModel.find();
   }
 
-  findOne(id: string) {
+  /*findOne(id: string) {
     return this.photoModel.findById(id)
+  }*/
+
+  findSpaces(typeSpace: string){
+    return this.photoModel.find().where('typeSpace', typeSpace)
   }
 
   update(id: string, updatePhotoDto: UpdatePhotoDto) {

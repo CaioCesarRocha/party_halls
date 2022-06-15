@@ -21,7 +21,7 @@ AppModule = __decorate([
             }),
             photos_module_1.PhotosModule,
             mongoose_1.MongooseModule.forRoot(process.env.MONGODB_HOST, {
-                dbName: 'PartyHalls_NEST',
+                dbName: process.env.MONGODB_DB_NAME,
             }),
         ],
         controllers: [],

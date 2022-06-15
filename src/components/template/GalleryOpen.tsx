@@ -22,7 +22,9 @@ export default function GalleryOpen(props: typeGallery) {
     useEffect(() =>{
         if(page === 0) setButtonRemoveOff(true);
         else if(buttonRemoveOff === true) setButtonRemoveOff(false);
-        if(props.spacesIntern.length === page + 1) setButtonAddOff(true);
+        if(props.spacesIntern.length === page + 1 || props.spacesExtern.length === page + 1 ) {
+            setButtonAddOff(true);
+        }      
         else if(buttonAddOff === true) setButtonAddOff(false);
     }, [page])
 
@@ -72,8 +74,8 @@ export default function GalleryOpen(props: typeGallery) {
                                     {props.spacesExtern[`${page}`].description.toUpperCase()}
                                 </Text>
                                 <Image
-                                    w={500} h={450}
-                                    src={props.spacesExtern[`${page}`].image}
+                                    w={500} h={450}                         
+                                    src={`/uploads/${props.spacesExtern[`${page}`].url}`}
                                     alt="Imagem do espaço"
                                 />
                             </>

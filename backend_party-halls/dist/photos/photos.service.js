@@ -28,8 +28,8 @@ let PhotosService = class PhotosService {
     findAll() {
         return this.photoModel.find();
     }
-    findOne(id) {
-        return this.photoModel.findById(id);
+    findSpaces(typeSpace) {
+        return this.photoModel.find().where('typeSpace', typeSpace);
     }
     update(id, updatePhotoDto) {
         return this.photoModel.findByIdAndUpdate({ _id: id, }, { $set: updatePhotoDto, }, { new: true, })

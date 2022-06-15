@@ -30,7 +30,8 @@ export default function RenderModal(props: propsRenderModal){
         const dataUser = new FormData();
         dataUser.append('avatar', selectedFile)   
 
-        const result = await fetch("http://localhost:3000/api/receiveAvatar", {
+        //3001 quando backend estiver rodando....
+        const result = await fetch("http://localhost:3001/api/receiveAvatar", {
           method: "POST",
           body: dataUser
         })
@@ -68,6 +69,7 @@ export default function RenderModal(props: propsRenderModal){
               <Dropzone
                 onFileUploaded={setSelectedFile}
                 message='Adicionar novo avatar'
+                rounded='full'
               />
             </ModalBody>
   
