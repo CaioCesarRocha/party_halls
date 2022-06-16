@@ -4,17 +4,20 @@ import {Modal, ModalOverlay, ModalContent,  ModalHeader, ModalFooter, Text,
 import { useEffect, useState } from 'react'
 
 import { ThemeColors } from "../../pages/services/tema/themeColors";
+import ButtonGalleryOpen from './Buttons/ButtonGalleryOpen';
 import { typeGallery } from './Gallery'
+
 
 export default function GalleryOpen(props: typeGallery) {
     const themeColors = ThemeColors();
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [page, setPage] = useState(0)
     const [buttonRemoveOff, setButtonRemoveOff] = useState<boolean>(false)
-    const [buttonAddOff, setButtonAddOff] = useState<boolean>(false)
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    
+    const [buttonAddInternOff, setButtonAddInternOff] = useState<boolean>(false)
+    const [buttonAddExternOff, setButtonAddExternOff] = useState<boolean>(false)
 
+    
     useEffect(() =>{
         setPage(0)
     }, [props.title])
@@ -22,10 +25,12 @@ export default function GalleryOpen(props: typeGallery) {
     useEffect(() =>{
         if(page === 0) setButtonRemoveOff(true);
         else if(buttonRemoveOff === true) setButtonRemoveOff(false);
-        if(props.spacesIntern.length === page + 1 || props.spacesExtern.length === page + 1 ) {
-            setButtonAddOff(true);
-        }      
-        else if(buttonAddOff === true) setButtonAddOff(false);
+
+        if(props.spacesIntern.length === page + 1) setButtonAddInternOff(true);  
+        else if(buttonAddInternOff === true) setButtonAddInternOff(false);  
+      
+        if(props.spacesExtern.length === page + 1) setButtonAddExternOff(true);  
+        else if(buttonAddExternOff === true) setButtonAddExternOff(false);                       
     }, [page])
 
 
@@ -57,11 +62,11 @@ export default function GalleryOpen(props: typeGallery) {
                                 <Text  fontWeight='black' px={2} py={1} borderRadius={8}
                                      color={themeColors.textButtonGallery} bgColor={themeColors.bgButtonGallery}
                                 >
-                                    {props.spacesIntern[`${page}`].description.toUpperCase()}
+                                    {props.spacesIntern[`${page}`]?.description?.toUpperCase()}
                                 </Text>
                                 <Image
                                     w={470} h={450}
-                                    src={props.spacesIntern[`${page}`].image}
+                                    src={`/uploads/${props.spacesIntern[`${page}`]?.url}`}
                                     alt="Imagem do espaço"
                                 />
                             </>
@@ -71,11 +76,11 @@ export default function GalleryOpen(props: typeGallery) {
                                     fontWeight='black' borderRadius={8} mb={1}  px={2} py={1}
                                     color={themeColors.textButtonGallery} bgColor={themeColors.bgButtonGallery}
                                 >
-                                    {props.spacesExtern[`${page}`].description.toUpperCase()}
+                                    {props.spacesExtern[`${page}`]?.description?.toUpperCase()}
                                 </Text>
                                 <Image
                                     w={500} h={450}                         
-                                    src={`/uploads/${props.spacesExtern[`${page}`].url}`}
+                                    src={`/uploads/${props.spacesExtern[`${page}`]?.url}`}
                                     alt="Imagem do espaço"
                                 />
                             </>
@@ -83,13 +88,25 @@ export default function GalleryOpen(props: typeGallery) {
                     </ModalBody>
         
                     <ModalFooter>            
-                        <Flex flexDirection='row' w='30%' justifyContent='space-between'> 
-                            <Button colorScheme='blue' isDisabled={buttonRemoveOff} onClick={() => removePage(page)}>
-                                Foto Anterior
-                            </Button>
-                            <Button colorScheme='blue' isDisabled={buttonAddOff} onClick={() => addPage(page)}>
-                                Próxima foto
-                            </Button>
+                        <Flex flexDirection='row' w='30%' justifyContent='space-around'> 
+                            <ButtonGalleryOpen
+                                info={'Foto Anterior'}
+                                disable={buttonRemoveOff}
+                                onClick={() => removePage(page)}
+                            />
+                            {props.title === 'INTERN' ?
+                                <ButtonGalleryOpen
+                                    info={'Proxima Foto'}
+                                    disable={buttonAddInternOff}
+                                    onClick={() => addPage(page)}
+                                />
+                                :
+                                <ButtonGalleryOpen
+                                    info={'Proxima Foto'}
+                                    disable={buttonAddExternOff}
+                                    onClick={() => addPage(page)}
+                                />
+                            }
                         </Flex>         
                     </ModalFooter>
                 </ModalContent>

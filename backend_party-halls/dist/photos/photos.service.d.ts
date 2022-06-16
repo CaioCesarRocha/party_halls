@@ -34,7 +34,7 @@ export declare class PhotosService {
     })[], Photo & import("mongoose").Document<any, any, any> & {
         _id: any;
     }, {}, PhotoDocument>;
-    findSpaces(typeSpace: string): import("mongoose").Query<(Photo & import("mongoose").Document<any, any, any> & {
+    findSpaces(typeSpace: 'Intern' | 'Extern'): import("mongoose").Query<(Photo & import("mongoose").Document<any, any, any> & {
         _id: any;
     })[], Photo & import("mongoose").Document<any, any, any> & {
         _id: any;

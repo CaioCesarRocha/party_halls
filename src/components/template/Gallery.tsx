@@ -16,11 +16,11 @@ export default function Gallery(props: typeGallery) {
         >          
             {props.title === 'INTERN' ?                  
                 props.spacesIntern?.map((img) => (
-                    <Container m={0} p={2} key={img.id}>                 
+                    <Container m={0} p={2} key={img._id}>                 
                         <Image
                             sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
                             w={{base:250, sm:400}} h={{base:230, sm:350}}
-                            src={img.image}
+                            src={`/uploads/${img.url}`}
                             alt="Foto do espaço"
                         />
                     </Container>

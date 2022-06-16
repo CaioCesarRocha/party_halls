@@ -23,7 +23,7 @@ export class PhotosController {
   }*/
 
   @Get(':typeSpace')
-  findSpaces(@Param('typeSpace') typeSpace: string){
+  findSpaces(@Param('typeSpace') typeSpace: 'Intern' | 'Extern'){
     return this.photosService.findSpaces(typeSpace)
   }
 

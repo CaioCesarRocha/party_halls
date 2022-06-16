@@ -10,6 +10,8 @@ export class Photo {
     url: string;
     @Prop()
     description: string;
+    @Prop()
+    typeSpace: string;    
 }
 
 //cria o Schema e exporta

@@ -34,7 +34,7 @@ export declare class PhotosController {
     })[], import("./entities/photo.entity").Photo & import("mongoose").Document<any, any, any> & {
         _id: any;
     }, {}, import("./entities/photo.entity").PhotoDocument>;
-    findSpaces(typeSpace: string): import("mongoose").Query<(import("./entities/photo.entity").Photo & import("mongoose").Document<any, any, any> & {
+    findSpaces(typeSpace: 'Intern' | 'Extern'): import("mongoose").Query<(import("./entities/photo.entity").Photo & import("mongoose").Document<any, any, any> & {
         _id: any;
     })[], import("./entities/photo.entity").Photo & import("mongoose").Document<any, any, any> & {
         _id: any;

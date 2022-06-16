@@ -26,7 +26,7 @@ export class PhotosService {
     return this.photoModel.findById(id)
   }*/
 
-  findSpaces(typeSpace: string){
+  findSpaces(typeSpace: 'Intern' | 'Extern'){
     return this.photoModel.find().where('typeSpace', typeSpace)
   }
 

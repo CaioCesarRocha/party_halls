@@ -93,7 +93,7 @@ export default function Budget(props) {
                         {formik.errors.numberParticipants && formik.touched.numberParticipants && (<ErrorForm> {formik.errors.numberParticipants}</ErrorForm>)}
 
                         <FormLabel htmlFor='typeParty' mt={2}>Selecione o tipo da Festa</FormLabel>                
-                        <Select name="typeParty"  onChange={formik.handleChange}>
+                        <Select name="typeParty"  onChange={formik.handleChange} >
                             <option value="Casamento">Casamento</option>
                             <option value="Corporativo">Corporativo</option>
                             <option value="Especial 15 anos">Especial 15 Anos</option>

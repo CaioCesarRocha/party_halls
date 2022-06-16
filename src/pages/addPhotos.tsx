@@ -22,7 +22,7 @@ export default function AddPhotos(props) {
     const [errorImg, setErrorImg] = useState<boolean>(false);
 
 
-    async function sendNewPhoto(data){   
+    async function sendNewPhoto(data, typeSpace: string){   
         if(selectedFile){
             const dataPhoto = new FormData();
             dataPhoto.append('photo', selectedFile) 
@@ -36,7 +36,8 @@ export default function AddPhotos(props) {
     
             await api.post('photos', {
                 url: `${dataResult?.newPhoto}`,
-                description: data?.description
+                description: data?.description,
+                typeSpace: typeSpace
             });
 
             return true
@@ -56,12 +57,14 @@ export default function AddPhotos(props) {
         enableReinitialize: true,
         
         onSubmit: async (data) => {
-            let response = await sendNewPhoto(data);
+            const typeSpace = data?.typeSpace || 'Intern'
+            
+            let response = await sendNewPhoto(data, typeSpace);
             if (response === true){     
                 formik.resetForm();
                 setErrorImg(false)
                 const name = selectedFile.name
-                alert(`Foto  ${name} - ${data.description} enviado com sucesso!`);
+                alert(`Foto  ${name} - ${data.description} - ${typeSpace} - enviado com sucesso!`);
             }        
         }
     });
@@ -88,13 +91,10 @@ export default function AddPhotos(props) {
                         />
                         {errorImg ? <ErrorForm> É preciso selecionar uma imagem </ErrorForm> : null}
 
-                        <FormLabel htmlFor='typeParty' mt={2}>Selecione o tipo da Festa</FormLabel>                
-                        <Select name="typeParty"  onChange={formik.handleChange}>
-                            <option value="Casamento">Casamento</option>
-                            <option value="Corporativo">Corporativo</option>
-                            <option value="Especial 15 anos">Especial 15 Anos</option>
-                            <option value="Formatura">Formatura</option>
-                            <option value="Festa Infantil">Festa Infantil</option>                       
+                        <FormLabel htmlFor='typeSpace' mt={2}>Selecione o tipo do Espaço</FormLabel>                
+                        <Select name="typeSpace"  onChange={formik.handleChange} >
+                            <option value="Intern">Interno</option>
+                            <option value="Extern">Externo</option>                      
                         </Select>
 
                         <FormLabel htmlFor='description' mt={3}> Descrição </FormLabel>

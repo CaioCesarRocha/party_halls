@@ -24,5 +24,6 @@ export declare type PhotoDocument = Photo & Document;
 export declare class Photo {
     url: string;
     description: string;
+    typeSpace: string;
 }
 export declare const PhotoSchema: import("mongoose").Schema<Photo, import("mongoose").Model<Photo, any, any, any>, {}, {}, any>;

@@ -21,6 +21,10 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Photo.prototype, "description", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Photo.prototype, "typeSpace", void 0);
 Photo = __decorate([
     (0, mongoose_1.Schema)()
 ], Photo);
