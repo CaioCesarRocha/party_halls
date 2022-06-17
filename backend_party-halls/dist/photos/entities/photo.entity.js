@@ -14,15 +14,15 @@ const mongoose_1 = require("@nestjs/mongoose");
 let Photo = class Photo {
 };
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Photo.prototype, "url", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Photo.prototype, "description", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Photo.prototype, "typeSpace", void 0);
 Photo = __decorate([

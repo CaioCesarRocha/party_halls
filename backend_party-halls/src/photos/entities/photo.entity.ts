@@ -6,11 +6,11 @@ export type PhotoDocument = Photo & Document;
 //Schema para que o Mongoose consiga mapear a classe no MongoDB;
 @Schema()
 export class Photo {
-    @Prop()
+    @Prop({required: true}) 
     url: string;
-    @Prop()
+    @Prop({required: true})
     description: string;
-    @Prop()
+    @Prop({required: true})
     typeSpace: string;    
 }
 
