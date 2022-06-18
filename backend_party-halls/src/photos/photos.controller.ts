@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, ValidationPipe } from '@nestjs/common';
 import { PhotosService } from './photos.service';
 import { CreatePhotoDto } from './dto/create-photo.dto';
 import { UpdatePhotoDto } from './dto/update-photo.dto';
@@ -8,7 +8,7 @@ export class PhotosController {
   constructor(private readonly photosService: PhotosService) {}
 
   @Post()
-  create(@Body() createPhotoDto: CreatePhotoDto) {
+  create(@Body(ValidationPipe) createPhotoDto: CreatePhotoDto) {
     return this.photosService.create(createPhotoDto);
   }
 
