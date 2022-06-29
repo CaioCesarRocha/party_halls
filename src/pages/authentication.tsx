@@ -14,7 +14,7 @@ export function getStaticProps(){
 
 
 export default function Authetication() {
-    const {registerUser, loginNormal, loginGoogle} = useAuth()
+    const {registerUser, loginNormal, loginGoogle, forgotPassword} = useAuth()
 
     const [ screen, setScreen] = useState<'Login' | 'Register'>('Login')
     const [ email, setEmail] = useState('')
@@ -22,7 +22,12 @@ export default function Authetication() {
     const [ confirmPassword, setConfirmPassword] = useState('')
     const [ notRenderConfirm, setNotRenderConfirm] = useState<boolean>(false)
     const [ msgError, setMsgError] = useState<string>(null)
-  
+    
+
+    useEffect(() =>{
+        if(screen === 'Register') setNotRenderConfirm(false) 
+        else setNotRenderConfirm(true)
+    }, [screen])
 
     const handlSendData = async() =>{
         try{
@@ -33,20 +38,28 @@ export default function Authetication() {
             }
         } catch(e){
             setMsgError(e?.message ?? errorAuth.unknowError)
-        }
-       
+        }    
     }
 
-    useEffect(() =>{
-        if(screen === 'Register') setNotRenderConfirm(false) 
-        else setNotRenderConfirm(true)
-    }, [screen])
+    const handleForgotPassword = async() =>{
+        if(!email){
+            alert('Digite um e-mail da sua conta para enviarmos a redefinição de senha.')
+        }
+        else{
+            try{
+                await forgotPassword(email)
+            }catch(e){
+                setMsgError(e?.message ?? errorAuth.unknowError)
+            }   
+        }
+    }
 
+
+ 
     return(
         <Flex 
-            h='100vh'
-            alignItems='center' justifyContent='center' 
-            backgroundColor='gray.300'
+            h='100vh' backgroundColor='gray.300'
+            alignItems='center' justifyContent='center'
         >   
             <Box>
                 <Image
@@ -56,10 +69,9 @@ export default function Authetication() {
                 />
             </Box>
             
-            <Box w={{ base: 'full', md: '60%', lg:"40%"}} h='100vh' ml={1} bgColor='teal.600' p={10} >
-                <Text
-                    fontFamily='bold' fontSize='3xl' mb={5}
-                    color='#dfe1e6'
+            <Box w={{ base: 'full', md: '60%', lg:"40%"}} h='100vh' ml={1} bgColor='teal.600' p={10} >          
+                <Text 
+                    fontFamily='bold' fontSize='3xl' mb={5} color='#dfe1e6'
                 >
                     {screen === 'Login' ? 'Entre com a sua conta' : 'Cadastra-se na plataforma'}
                 </Text>
@@ -91,6 +103,20 @@ export default function Authetication() {
                     notRender={notRenderConfirm} // quando for tela de login, passa true por exemplo
                 />
 
+                {screen === 'Login' ? 
+                    <Text 
+                        mt={3} fontSize={12} fontWeight='bold'  cursor='pointer'
+                        color='#2a2773' _hover={{color: '#84888a'}} textAlign='right' 
+                    >                 
+                        <a onClick={() => handleForgotPassword()}>
+                            Esqueceu a senha?
+                        </a>
+                    </Text>
+                : 
+                    null
+                }
+                
+
                 <Button
                     w='full' rounded='lg' px={4} py={3} mt={10}
                     color='gray.100'
@@ -107,10 +133,9 @@ export default function Authetication() {
                     onClick={loginGoogle}
                 >
                     Entrar com Google                 
-                    <i style={{marginLeft: 5}}>{iconGoogle}</i>
+                    <i style={{marginLeft: 5}}> {iconGoogle} </i>
                 </Button>
             
-
             
                 {screen === 'Login' ? 
                     <Text mt={3}>

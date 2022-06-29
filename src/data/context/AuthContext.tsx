@@ -12,6 +12,7 @@ interface AuthContextProps{
     registerUser?: (email: string, password:string) => Promise<void>,
     loginGoogle?: () => Promise<void>,
     logoutGoogle?: () => Promise<void>,
+    forgotPassword?: (email: string) => Promise<void>,
 }
 
 const AuthContext= createContext<AuthContextProps>({
@@ -102,7 +103,6 @@ export function AuthProvider(props){
             const resp = await firebase.auth().signInWithPopup(
                 new firebase.auth.GoogleAuthProvider()
             )
-
             await configSession(resp.user)
             route.push('/') 
         } finally {
@@ -118,6 +118,21 @@ export function AuthProvider(props){
         } finally{
             setLoading(false)
         }        
+    }
+
+    async function forgotPassword(email){
+         //redefinir Senha
+        await firebase.auth().sendPasswordResetEmail(email)
+        .then(() => {
+            alert('Verifique sua caixa de e-mail.')
+        })
+        .catch((error) => {
+            alert('Não existe nenhuma conta criada neste e-mail. Insira um e-mail válido. ')
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+        });
     }
 
 
@@ -140,7 +155,8 @@ export function AuthProvider(props){
             loginNormal,
             registerUser,
             loginGoogle,
-            logoutGoogle
+            logoutGoogle,
+            forgotPassword
         }}>
             {props.children}
         </AuthContext.Provider  >
