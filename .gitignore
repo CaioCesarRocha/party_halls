@@ -1,25 +1,22 @@
 #uploads
-uploads
-public/uploads
+/frontend/uploads
+/frontend/public/uploads
 
 #testes
-db.json
-
-#public
-public/Videos
+/frontend/db.json
 
 # dependencies
-/node_modules
+/frontend/node_modules
 /backend_party-halls/node_modules
 /.pnp
 .pnp.js
 
 # next.js
-/.next/
-/out/
+/frontend/.next/
+/frontend/out/
 
 # production
-/build
+/frontend/build
 
 # misc
 .DS_Store
@@ -30,9 +27,9 @@ npm-debug.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+/frontend/.env*.local
 .env.local
 /backend_party-halls/.env
 
 # vercel
-.vercel
+/frontend/.vercel
