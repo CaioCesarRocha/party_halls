@@ -37,5 +37,9 @@
 
 - Após isso para rodar a aplicação como desenvolvimento basta executar o comando npm run start:dev (backend) e npm run dev (no frontend) 
 
+### OBSERVAÇÃO
+
+- Não esqueça de criar as suas variáveis de ambiente no arquivo .env, conforme exemplificado no arquivo env.example. Faça isso para o front e back;
+
 
 ![Snake animation](https://github.com/CaioCesarRocha/CaioCesarRocha/blob/output/github-contribution-grid-snake.svg)
