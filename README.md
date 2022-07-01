@@ -17,6 +17,7 @@
   <img align="center" alt="Caio-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
   <img align="center" alt="Caio-Next" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg">
   <img align="center" alt="Caio-Nest" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg">
+  <img align="center" alt="Caio-Mongo" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">  
 </div>
   
  ##
@@ -25,5 +26,16 @@
    <a href = "mailto:caio.cesar209@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
   <a href="https://www.linkedin.com/in/caio-c%C3%A9sar-anast%C3%A1cio-120635207/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
 </div>
+
+##
+
+# Como rodar a aplicação
+
+- Utilizando Docker: Basta rodar o comando docker-compose up  na pasta raiz do projeto
+
+- Caso não tenha docker, deve entrar em cada pasta separada (front e backend) e executar o npm install
+
+- Após isso para rodar a aplicação como desenvolvimento basta executar o comando npm run start:dev (backend) e npm run dev (no frontend) 
+
 
 ![Snake animation](https://github.com/CaioCesarRocha/CaioCesarRocha/blob/output/github-contribution-grid-snake.svg)
