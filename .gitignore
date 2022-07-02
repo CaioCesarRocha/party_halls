@@ -33,3 +33,6 @@ npm-debug.log*
 
 # vercel
 /frontend/.vercel
+
+#dist
+/backend_party-halls/dist
