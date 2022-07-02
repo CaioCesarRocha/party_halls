@@ -8,8 +8,8 @@ export class PhotosController {
   constructor(private readonly photosService: PhotosService) {}
 
   @Post()
-  create(@Body(ValidationPipe) createPhotoDto: CreatePhotoDto) {
-    return this.photosService.create(createPhotoDto);
+  create(@Body(ValidationPipe) createPhoto: CreatePhotoDto) {
+    return this.photosService.create(createPhoto);
   }
 
   @Get()
@@ -28,8 +28,8 @@ export class PhotosController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updatePhotoDto: UpdatePhotoDto) {
-    return this.photosService.update(id, updatePhotoDto);
+  update(@Param('id') id: string, @Body() updatePhoto: UpdatePhotoDto) {
+    return this.photosService.update(id, updatePhoto);
   }
 
   @Delete(':id')

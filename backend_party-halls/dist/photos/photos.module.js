@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PhotosModule = void 0;
 const common_1 = require("@nestjs/common");
 const photos_service_1 = require("./photos.service");
+const photos_repository_1 = require("./photos.repository");
 const photos_controller_1 = require("./photos.controller");
 const photo_entity_1 = require("./entities/photo.entity");
 const mongoose_1 = require("@nestjs/mongoose");
@@ -20,7 +21,7 @@ PhotosModule = __decorate([
             mongoose_1.MongooseModule.forFeature([{ name: photo_entity_1.Photo.name, schema: photo_entity_1.PhotoSchema }])
         ],
         controllers: [photos_controller_1.PhotosController],
-        providers: [photos_service_1.PhotosService]
+        providers: [photos_service_1.PhotosService, photos_repository_1.PhotoRepository]
     })
 ], PhotosModule);
 exports.PhotosModule = PhotosModule;

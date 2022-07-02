@@ -8,41 +8,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PhotosService = void 0;
 const common_1 = require("@nestjs/common");
-const photo_entity_1 = require("./entities/photo.entity");
-const mongoose_1 = require("mongoose");
-const mongoose_2 = require("@nestjs/mongoose");
+const photos_repository_1 = require("./photos.repository");
 let PhotosService = class PhotosService {
-    constructor(photoModel) {
-        this.photoModel = photoModel;
+    constructor(photoRepository) {
+        this.photoRepository = photoRepository;
     }
-    create(createPhotoDto) {
-        const photo = new this.photoModel(createPhotoDto);
-        return photo.save();
+    async create(photo) {
+        const createdPhoto = await this.photoRepository.create(photo);
+        return createdPhoto;
     }
-    findAll() {
-        return this.photoModel.find();
+    async findAll() {
+        const allPhotos = await this.photoRepository.findAll();
+        return allPhotos;
     }
-    findSpaces(typeSpace) {
-        return this.photoModel.find().where('typeSpace', typeSpace);
+    async findSpaces(typeSpace) {
+        const photoSpace = await this.photoRepository.findSpaces(typeSpace);
+        return photoSpace;
     }
-    update(id, updatePhotoDto) {
-        return this.photoModel.findByIdAndUpdate({ _id: id, }, { $set: updatePhotoDto, }, { new: true, })
-            .exec();
+    async update(id, updatePhoto) {
+        const photoUpdate = await this.photoRepository.update(id, updatePhoto);
+        return photoUpdate;
     }
-    remove(id) {
-        return this.photoModel.deleteOne({ _id: id }).exec();
+    async remove(id) {
+        const photoRemoved = await this.photoRepository.remove(id);
+        return photoRemoved;
     }
 };
 PhotosService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_2.InjectModel)(photo_entity_1.Photo.name)),
-    __metadata("design:paramtypes", [mongoose_1.Model])
+    __metadata("design:paramtypes", [photos_repository_1.PhotoRepository])
 ], PhotosService);
 exports.PhotosService = PhotosService;
 //# sourceMappingURL=photos.service.js.map

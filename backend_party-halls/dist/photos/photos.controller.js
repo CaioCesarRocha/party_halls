@@ -21,8 +21,8 @@ let PhotosController = class PhotosController {
     constructor(photosService) {
         this.photosService = photosService;
     }
-    create(createPhotoDto) {
-        return this.photosService.create(createPhotoDto);
+    create(createPhoto) {
+        return this.photosService.create(createPhoto);
     }
     findAll() {
         return this.photosService.findAll();
@@ -30,8 +30,8 @@ let PhotosController = class PhotosController {
     findSpaces(typeSpace) {
         return this.photosService.findSpaces(typeSpace);
     }
-    update(id, updatePhotoDto) {
-        return this.photosService.update(id, updatePhotoDto);
+    update(id, updatePhoto) {
+        return this.photosService.update(id, updatePhoto);
     }
     remove(id) {
         return this.photosService.remove(id);

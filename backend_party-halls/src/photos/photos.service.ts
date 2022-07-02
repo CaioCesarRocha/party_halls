@@ -2,44 +2,43 @@ import { Injectable } from '@nestjs/common';
 import { CreatePhotoDto } from './dto/create-photo.dto';
 import { UpdatePhotoDto } from './dto/update-photo.dto';
 
-import { Photo, PhotoDocument } from './entities/photo.entity';
-import {Model} from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
+import { PhotoRepository } from './photos.repository';
+import { Photo, } from './entities/photo.entity';
+
 
 @Injectable()
 export class PhotosService {
-  constructor(
-    @InjectModel(Photo.name) //usado para fazer a injeção de dependencias
-    private photoModel: Model<PhotoDocument> // no caso esta injetando o UserDocument vindo do entitiy
-  ) {}
+  constructor(private photoRepository: PhotoRepository) {}
 
-  create(createPhotoDto: CreatePhotoDto) {
-    const photo = new this.photoModel(createPhotoDto);
-    return photo.save();
+  async create(photo: CreatePhotoDto): Promise<Photo> {
+    const createdPhoto = await this.photoRepository.create(photo);
+    return createdPhoto
   }
 
-  findAll() {
-    return this.photoModel.find();
+  async findAll() {
+    const allPhotos = await this.photoRepository.findAll();
+    return allPhotos
   }
 
-  /*findOne(id: string) {
-    return this.photoModel.findById(id)
+  /*async findOne(id: string){
+    const onePhoto = await this.photoRepository.findOne(id);
+    return onePhoto
   }*/
 
-  findSpaces(typeSpace: 'Intern' | 'Extern'){
-    return this.photoModel.find().where('typeSpace', typeSpace)
+  async findSpaces(typeSpace: 'Intern' | 'Extern'){
+    const photoSpace = await this.photoRepository.findSpaces(typeSpace);
+    return photoSpace
   }
 
-  update(id: string, updatePhotoDto: UpdatePhotoDto) {
-    return this.photoModel.findByIdAndUpdate(
-      { _id: id, },
-      { $set: updatePhotoDto, },
-      { new: true, },
-    )
-    .exec();
+  async update(id: string, updatePhoto: UpdatePhotoDto) {
+    const photoUpdate = await this.photoRepository.update(id, updatePhoto)
+    return photoUpdate
   }
 
-  remove(id: string) {
-    return this.photoModel.deleteOne({_id: id}).exec();
+
+  async remove(id: string){
+    const photoRemoved = await this.photoRepository.remove(id);
+    return photoRemoved
   }
+
 }
