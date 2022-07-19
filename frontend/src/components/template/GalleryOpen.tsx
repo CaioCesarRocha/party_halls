@@ -88,7 +88,9 @@ export default function GalleryOpen(props: typeGallery) {
                     </ModalBody>
         
                     <ModalFooter>            
-                        <Flex flexDirection='row' w='30%' justifyContent='space-around'> 
+                        <Flex flexDirection='row' w={{base: '100%', sm:'50%', md: '30%'}} 
+                            justifyContent='space-between'
+                        > 
                             <ButtonGalleryOpen
                                 info={'Foto Anterior'}
                                 disable={buttonRemoveOff}

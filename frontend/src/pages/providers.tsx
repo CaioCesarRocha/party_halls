@@ -8,8 +8,9 @@ import { ThemeColors } from "./services/tema/themeColors";
 
 
 export async function getStaticProps(){
-  const resp = await fetch('http://localhost:3000/api/providers')
+  const resp = await fetch('http://localhost:3001/api/providers')
   const providers = await resp.json()
+
   return { 
     props: {providers} 
   }
@@ -62,10 +63,10 @@ export default function Providers(props) {
       subtitle="Conheça os nossos parceiros que colaboram para fornecer as melhores experiências para você."
     > 
       <Flex 
-        flexGrow={1} flexDirection={{base: 'column', sm:'row'}} w='100%'
+        flexGrow={1} flexDirection={{base: 'column', md:'row'}} w='100%'
         justifyContent='center' alignItems='start' 
       > 
-        <Flex flexDirection={{base: 'column', md:'row'}}>
+        <Flex flexDirection={{base:'row'}}>
           <ButtonBasic
             info='Casamento'
             onClick={() => setTitle('Casamento')}
@@ -77,7 +78,7 @@ export default function Providers(props) {
           />         
         </Flex>
 
-        <Flex flexDirection={{base: 'column', md:'row'}}>
+        <Flex flexDirection={{base:'row'}}>
             <ButtonBasic
               info='Especial 15 anos'
               onClick={() =>  setTitle('Especial 15 anos')}

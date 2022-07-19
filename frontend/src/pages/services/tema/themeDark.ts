@@ -1,5 +1,6 @@
 // 1. importa a função `extendTheme`
-import { extendTheme,  type ThemeConfig} from '@chakra-ui/react'   
+import { extendTheme} from '@chakra-ui/react'   
+import {ThemeConfig} from '@chakra-ui/react'  
 
 
 

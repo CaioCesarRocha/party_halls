@@ -41,7 +41,7 @@ const Dropzone: React.FC<propsDropzone>= ({onFileUploaded, message, rounded}) =>
 
             {selectedFileUrl ?
                 <Image 
-                    h={300} w={300} rounded={rounded}
+                    h={220} w={340} rounded={rounded}
                     src={selectedFileUrl} 
                     alt="Mechanical thumbnail"
                 />

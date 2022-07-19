@@ -16,7 +16,7 @@ const Section = (props: propsSection) =>{
     return(
         <Box m={2}>
             <Divider bgColor={themeColors.bgButtonGallery}/>
-            <Flex flexDirection='row' mt={2}>
+            <Flex flexDirection={{base: 'column', sm: 'row'}} mt={2}>
                 <Image
                     width={{ base: 150, sm:200, md:250}} height={{base: 150, sm:200, md: 250}}
                     src='https://picsum.photos/300/300'

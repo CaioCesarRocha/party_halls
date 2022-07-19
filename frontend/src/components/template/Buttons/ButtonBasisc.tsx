@@ -13,7 +13,7 @@ const ButtonBasic = (props: propsButton) =>{
     return(
         <Button
             ml={{base: 2, sm: 5}} mt={{ base:3, md:0}}
-            width='130px'
+            width={{base: 100, sm: 130}} fontSize={{base: 13, sm: 16}}
             bgColor={themeColors.bgButtonGallery} color={themeColors.textButtonGallery}
             _hover={{bgColor: themeColors.hoverBGButtonGallery}}
             onClick={props.onClick}

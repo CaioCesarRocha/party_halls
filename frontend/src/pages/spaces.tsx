@@ -30,7 +30,6 @@ export default function Spaces(props) {
   const [spaces, setSpaces] = useState<any[]>([])
 
   
-
   return (
     <Layout 
       title="Espaço Disponível"
